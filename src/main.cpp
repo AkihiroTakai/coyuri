@@ -17,23 +17,20 @@ int main(int argc, char **argv){
 	fl_register_images();
 	Fl_Window win(610, 700, "Coyuri");
 
-	Fl_PNG_Image img("/home/takai/Pictures/coyuri/ban.png");
-
       for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
 			Fl_Box *fl_box = new Fl_Box(x*IMAGE_SIDE, y*IMAGE_SIDE, x*IMAGE_SIDE+70, y*IMAGE_SIDE+70);
-			fl_box->image(img);
+			fl_box->image(images[EMPTY]);
 			ban[x][y] = fl_box;
 		}
 	}
-
 
 	Fl_Input *input = new Fl_Input(200, 640, 70, 30, "手:");
 	Fl_Button *button = new Fl_Button(300, 630, 50, 50, "打つ");
 
 	void* v[] = {input};
 	button->callback(draw_koma, v);
-	
+
 	init();
 
 	win.end();
@@ -73,7 +70,9 @@ void images_path_init(){
 	images[EN_OU]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_ou.png");
 }
 
-
+/*
+ *駒ｗｐ初期位置に配置する関数
+ */
 void put_koma_init(){
 	/*
 	 *味方
@@ -111,6 +110,9 @@ void put_koma_init(){
 
 }
 
+/*
+ *初期化を行う関数
+ */
 void init(){
 	images_path_init();
 	put_koma_init();
@@ -136,6 +138,9 @@ int ctoi(char ch){
 	else return -1;
 }
 
+/*
+ *駒を版にセットし再描画する関数
+ */
 void set_and_redraw(Point p, Fl_PNG_Image *image){
 	ban[p.get_x()][p.get_y()]->image(image);
 	ban[p.get_x()][p.get_y()]->redraw();
