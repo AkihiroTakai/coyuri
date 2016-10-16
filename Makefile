@@ -4,7 +4,7 @@ DST=./dst
 SRC=./src
 BIN=./bin
 CFLAGS=`fltk-config --cxxflags`
-LDFLAGS=`fltk-config --ldflags`
+LDFLAGS=`fltk-config --ldflags --use-images`
 OBJS=$(DST)/main.o
 
 coyuri: $(OBJS)
