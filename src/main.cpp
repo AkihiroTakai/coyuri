@@ -12,6 +12,7 @@ Fl_Box *ban[9][9];
 
 void draw_koma(Fl_Widget* widget, void *v);
 int ctoi(char ch);
+void init();
 
 int main(int argc, char **argv){
 
@@ -38,6 +39,10 @@ int main(int argc, char **argv){
 	win.show(argc, argv);
 
 	return Fl::run();
+}
+
+void init(){
+	
 }
 
 /*

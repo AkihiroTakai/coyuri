@@ -34,7 +34,7 @@ class Koma {
 	/*
 	 *表示する画像のパス
 	 */
-	std::string image_path;
+	std::string *image_path;
 	/*
 	 *置かれている座標
 	 */
@@ -43,7 +43,7 @@ public:
 	/*
 	 *コンストラクタ
 	 */
-	Koma(KOMA_TYPE type, std::string image_path);
+	Koma(KOMA_TYPE type, std::string *image_path);
 	/*
 	 *setter/getter
 	 */
