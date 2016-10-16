@@ -1,10 +1,19 @@
 #ifndef KOMA_HPP
 #define KOMA_HPP
 
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Box.H>
+#include <FL/Fl_Shared_Image.H>
+#include <FL/Fl_PNG_Image.H>
 #include <string>
 #include <vector>
 
-enum KOMA_TYPE {HU, KYOUSHA, KEIMA, GIN, KIN, HISHA, KAKU, OU};
+enum KOMA_TYPE {
+	EMPTY,
+	HU, KYOUSHA, KEIMA, GIN, KIN, HISHA, KAKU, OU,
+	EN_HU, EN_KYOUSHA, EN_KEIMA, EN_GIN, EN_KIN, EN_HISHA, EN_KAKU, EN_OU
+};
 
 class Point {
 	/*
@@ -32,9 +41,9 @@ class Koma {
 	 */
 	KOMA_TYPE Type;
 	/*
-	 *表示する画像のパス
+	 *表示する画像
 	 */
-	std::string *image_path;
+	Fl_PNG_Image *image_path;
 	/*
 	 *置かれている座標
 	 */
