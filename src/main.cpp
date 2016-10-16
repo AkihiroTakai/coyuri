@@ -4,9 +4,13 @@
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Shared_Image.H>
 #include <FL/Fl_PNG_Image.H>
+#include <FL/Fl_Input.H>
+#include <FL/Fl_Button.H>
 
 const int IMAGE_SIDE = 45;
 Fl_Box *ban[9][9];
+
+void draw_koma(Fl_Widget* widget);
 
 int main(int argc, char **argv){
 
@@ -23,9 +27,17 @@ int main(int argc, char **argv){
 		}
 	}
 
+	Fl_Input* input = new Fl_Input(200, 640, 70, 30, "手:");
+	Fl_Button* button = new Fl_Button(300, 630, 50, 50, "打つ");
+	button->callback(draw_koma);
+
 	win.end();
 	win.show(argc, argv);
 
 	return Fl::run();
 }
 
+void draw_koma(Fl_Widget* widget){
+	ban[7][7]->image(new Fl_PNG_Image("/home/takai/Pictures/coyuri/kyousha.png"));
+	ban[7][7]->redraw();
+}
