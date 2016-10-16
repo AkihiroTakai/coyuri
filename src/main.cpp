@@ -1,4 +1,3 @@
-#include <vector>
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Box.H>
@@ -6,7 +5,7 @@
 #include <FL/Fl_PNG_Image.H>
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Button.H>
-#include <string>
+#include "../include/koma.hpp"
 
 const int IMAGE_SIDE = 45;
 Fl_Box *ban[9][9];
