@@ -41,10 +41,6 @@ class Koma {
 	 */
 	KOMA_TYPE Type;
 	/*
-	 *表示する画像
-	 */
-	Fl_PNG_Image *image_path;
-	/*
 	 *置かれている座標
 	 */
 	Point point;
@@ -67,7 +63,7 @@ public:
 	/*
 	 *駒が動ける座標をstd::vectorにして返す関数
 	 */
-	virtual std::vector<Point> where_can_move() = 0;
+	virtual std::vector<Point> where_can_move();
 };
 
 #endif

@@ -5,7 +5,7 @@
 #include "../include/prot.hpp"
 
 const int IMAGE_SIDE = 45;
-Fl_Box *ban[9][9];
+Fl_Box *main_ban[9][9];
 Fl_PNG_Image *images[17];
 
 int main(int argc, char **argv){
@@ -17,7 +17,7 @@ int main(int argc, char **argv){
 		for(int x = 1;x < 10;x++){
 			Fl_Box *fl_box = new Fl_Box(x*IMAGE_SIDE, y*IMAGE_SIDE, x*IMAGE_SIDE+70, y*IMAGE_SIDE+70);
 			fl_box->image(NULL);
-			ban[x-1][y-1] = fl_box;
+			main_ban[x-1][y-1] = fl_box;
 		}
 	}
 
@@ -57,6 +57,6 @@ int ctoi(char ch){
  *駒を版にセットし再描画する関数
  */
 void set_and_redraw(Point p, Fl_PNG_Image *image){
-	ban[8-p.get_x()][p.get_y()]->image(image);
-	ban[8-p.get_x()][p.get_y()]->redraw();
+	main_ban[8-p.get_x()][p.get_y()]->image(image);
+	main_ban[8-p.get_x()][p.get_y()]->redraw();
 }
