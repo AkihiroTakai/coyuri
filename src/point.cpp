@@ -1,4 +1,4 @@
-#include "../include/koma.hpp"
+#include "../include/type.hpp"
 
 /*
  *Pointクラスのメンバメソッドの定義

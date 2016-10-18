@@ -1,14 +1,14 @@
 #ifndef BANMEN_HPP
 #define BANMEN_HPP
 
-#include "koma.hpp"
+#include "type.hpp"
 
 class Banmen {
 
 	/*
 	 *将棋の盤面
 	 */
-	Koma ban[9][9];
+	KOMA_TYPE ban[9][9];
 
 public:
 	/*
@@ -18,7 +18,7 @@ public:
 	/*
 	 *指定した駒の座標を返すメソッド
 	 */
-	Koma get_koma(Point p);
+	KOMA_TYPE get_koma(Point p);
 };
 
 #endif

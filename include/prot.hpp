@@ -2,7 +2,7 @@
 #define PROT_HPP
 
 #include <FL/Fl.H>
-#include "../include/koma.hpp"
+#include "type.hpp"
 
 void draw_koma(Fl_Widget* widget, void *v);
 int ctoi(char ch);

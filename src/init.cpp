@@ -1,5 +1,5 @@
 #include "../include/value.hpp"
-#include "../include/koma.hpp"
+#include "../include/type.hpp"
 #include "../include/prot.hpp"
 
 void images_path_init(){

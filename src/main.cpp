@@ -2,7 +2,7 @@
 #include <FL/Fl_Button.H>
 #include <iostream>
 #include <functional>
-#include "../include/koma.hpp"
+#include "../include/type.hpp"
 #include "../include/prot.hpp"
 
 const int IMAGE_SIDE = 45;
@@ -61,7 +61,7 @@ void draw_koma(Fl_Widget* widget, void *v){
 	int x, y;
 	x = ctoi(input.c_str()[0])-1;
 	y = ctoi(input.c_str()[1])-1;
-	for(Point point : where_can_move(Point(x, y), HU)){
+	for(Point point : where_can_move(Point(x, y), main_ban[x][y])){
 		set_and_redraw(point, TARGET);
 	}
 }
