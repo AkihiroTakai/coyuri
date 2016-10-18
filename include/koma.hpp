@@ -64,12 +64,12 @@ public:
 	/*
 	 *駒が動ける座標をstd::vectorにして返すメソッド
 	 */
-	virtual std::vector<Point> where_can_move();
+	//virtual std::vector<Point> where_can_move();
 
 	/*
 	 *駒が成るときに使うメソッド
 	 */
-	virtual Koma naru();
+	//virtual Koma naru();
 };
 
 /*

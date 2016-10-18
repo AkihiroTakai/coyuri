@@ -1,6 +1,7 @@
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Button.H>
 #include <iostream>
+#include <functional>
 #include "../include/koma.hpp"
 #include "../include/prot.hpp"
 
@@ -8,6 +9,7 @@ const int IMAGE_SIDE = 45;
 Fl_Box *visual_ban[9][9];
 KOMA_TYPE main_ban[9][9];
 Fl_PNG_Image *images[18];
+std::vector<std::function<std::vector<Point>(Point point)>> wcm_ftable(18);
 
 int main(int argc, char **argv){
 
@@ -59,7 +61,9 @@ void draw_koma(Fl_Widget* widget, void *v){
 	int x, y;
 	x = ctoi(input.c_str()[0])-1;
 	y = ctoi(input.c_str()[1])-1;
-	set_and_redraw(Point(x, y), KYOUSHA);
+	for(Point point : where_can_move(Point(x, y), HU)){
+		set_and_redraw(point, TARGET);
+	}
 }
 
 /*
