@@ -36,6 +36,8 @@ public:
 };
 
 class Koma {
+
+protected:
 	/*
 	 *駒の種類
 	 */
@@ -48,22 +50,34 @@ public:
 	/*
 	 *コンストラクタ
 	 */
-	Koma(KOMA_TYPE type, std::string *image_path);
+	Koma(KOMA_TYPE type);
 	/*
 	 *setter/getter
 	 */
 	Point get_point();
-	void set_point(Point p);
 
 	/*
-	 *駒を指定する座標を移動させる関数
+	 *駒を指定する座標を移動させるメソッド
 	 *必ずwhere_can_move関数を使って求めた座標に移動させること
 	 */
 	void move(Point p);
 	/*
-	 *駒が動ける座標をstd::vectorにして返す関数
+	 *駒が動ける座標をstd::vectorにして返すメソッド
 	 */
 	virtual std::vector<Point> where_can_move();
+
+	/*
+	 *駒が成るときに使うメソッド
+	 */
+	virtual Koma naru();
+};
+
+class HU : Koma {
+
+public:
+	std::vector<Point> where_can_move();
+	Koma naru();
+
 };
 
 #endif
