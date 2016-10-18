@@ -34,17 +34,15 @@ int main(int argc, char **argv){
 }
 
 
-
 /*
  *駒を描画する関数
  */
 void draw_koma(Fl_Widget* widget, void *v){
 	std::string input = ((Fl_Input*)((void**)v)[0])->value();
 	int x, y;
-	x = ctoi(input.c_str()[0]);
-	y = ctoi(input.c_str()[1]);
-	ban[x-1][y-1]->image(new Fl_PNG_Image("/home/takai/Pictures/coyuri/kyousha.png"));
-	ban[x-1][y-1]->redraw();
+	x = ctoi(input.c_str()[0])-1;
+	y = ctoi(input.c_str()[1])-1;
+	set_and_redraw(Point(x, y), images[KYOUSHA]);
 }
 
 /*
@@ -59,6 +57,6 @@ int ctoi(char ch){
  *駒を版にセットし再描画する関数
  */
 void set_and_redraw(Point p, Fl_PNG_Image *image){
-	ban[p.get_x()][p.get_y()]->image(image);
-	ban[p.get_x()][p.get_y()]->redraw();
+	ban[8-p.get_x()][p.get_y()]->image(image);
+	ban[8-p.get_x()][p.get_y()]->redraw();
 }
