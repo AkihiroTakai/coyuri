@@ -54,8 +54,8 @@ void put_koma_init(){
 	set_and_redraw(Point(1, 8), images[KEIMA]);
 	set_and_redraw(Point(2, 8), images[GIN]);
 	set_and_redraw(Point(3, 8), images[KIN]);
-	set_and_redraw(Point(7, 7), images[HISHA]);
-	set_and_redraw(Point(1, 7), images[KAKU]);
+	set_and_redraw(Point(1, 7), images[HISHA]);
+	set_and_redraw(Point(7, 7), images[KAKU]);
 	for(int i = 0;i < 9;i++)
 		set_and_redraw(Point(i, 6), images[HU]);
 
