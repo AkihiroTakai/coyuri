@@ -7,6 +7,6 @@
 #include "type.hpp"
 
 extern Fl_PNG_Image *images[17];
-extern std::vector<std::function<std::vector<Point>(Point point)>> wcm_ftable;
+extern std::vector<Point> (*wcm_ftable[])(Point point);
 
 #endif

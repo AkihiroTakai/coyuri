@@ -19,3 +19,16 @@ std::vector<Point> where_can_move(Point point, KOMA_TYPE type){
 	return points;
 }
 
+std::vector<Point> hu_wcm(Point point){
+	std::vector<Point> points;
+	/*
+	 *もしも敵の一番置くまで進んでいたら何も挿入せずに返す
+	 */
+	if(point.get_y() == 1) return points;
+	/*
+	 *座標を挿入
+	 */
+	points.push_back(Point(point.get_x(), point.get_y()-1));
+
+	return points;
+}

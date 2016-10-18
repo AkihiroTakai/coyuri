@@ -9,7 +9,11 @@ const int IMAGE_SIDE = 45;
 Fl_Box *visual_ban[9][9];
 KOMA_TYPE main_ban[9][9];
 Fl_PNG_Image *images[18];
-std::vector<std::function<std::vector<Point>(Point point)>> wcm_ftable(18);
+std::vector<Point> (*wcm_ftable[])(Point point) = {
+	NULL,
+	NULL,
+	hu_wcm
+};
 
 int main(int argc, char **argv){
 
@@ -61,7 +65,8 @@ void draw_koma(Fl_Widget* widget, void *v){
 	int x, y;
 	x = ctoi(input.c_str()[0])-1;
 	y = ctoi(input.c_str()[1])-1;
-	for(Point point : where_can_move(Point(x, y), main_ban[x][y])){
+	std::cout << wcm_ftable[HU](Point(x, y)).size() << std::endl;
+	for(Point point : wcm_ftable[HU](Point(x, y))){
 		set_and_redraw(point, TARGET);
 	}
 }
