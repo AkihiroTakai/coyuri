@@ -7,6 +7,7 @@ void images_path_init(){
 	 *駒が置かれていない
 	 */
 	images[EMPTY]   = new Fl_PNG_Image("/home/takai/Pictures/coyuri/ban.png");
+	images[TARGET]  = new Fl_PNG_Image("/home/takai/Pictures/coyuri/target.png");
 
 	/*
 	 *味方

@@ -6,8 +6,8 @@
 
 const int IMAGE_SIDE = 45;
 Fl_Box *visual_ban[9][9];
-Koma *main_ban[9][9];
-Fl_PNG_Image *images[17];
+KOMA_TYPE main_ban[9][9];
+Fl_PNG_Image *images[18];
 
 int main(int argc, char **argv){
 
@@ -25,9 +25,9 @@ int main(int argc, char **argv){
 			 */
 			fl_box->image(NULL);
 			/*
-			 *裏で動く盤面変数もすべてNULLで初期化
+			 *裏で動く盤面変数はすべてEMPTYで初期化
 			 */
-			main_ban[x-1][y-1]   = NULL;
+			main_ban[x-1][y-1]   = EMPTY;
 			/*
 			 *visual_banにNULLの画像が入ったboxを代入していく
 			 */
@@ -76,4 +76,5 @@ int ctoi(char ch){
 void set_and_redraw(Point p, KOMA_TYPE type){
 	visual_ban[8-p.get_x()][p.get_y()]->image(images[type]);
 	visual_ban[8-p.get_x()][p.get_y()]->redraw();
+	main_ban[8-p.get_x()][p.get_y()] = type;
 }
