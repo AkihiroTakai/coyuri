@@ -7,6 +7,6 @@
 void draw_koma(Fl_Widget* widget, void *v);
 int ctoi(char ch);
 void init();
-void set_and_redraw(Point p, Fl_PNG_Image *image);
+void set_and_redraw(Point p, KOMA_TYPE type);
 
 #endif

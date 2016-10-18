@@ -72,6 +72,9 @@ public:
 	virtual Koma naru();
 };
 
+/*
+ *歩クラスの定義
+ */
 class HU : Koma {
 
 public:

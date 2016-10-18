@@ -39,42 +39,42 @@ void images_path_init(){
 void put_koma_init(){
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
-		      set_and_redraw(Point(x, y), images[EMPTY]);
+		      set_and_redraw(Point(x, y), EMPTY);
 		}
 	}
 	/*
 	 *味方
 	 */
-      set_and_redraw(Point(8, 8), images[KYOUSHA]);
-	set_and_redraw(Point(7, 8), images[KEIMA]);
-	set_and_redraw(Point(6, 8), images[GIN]);
-	set_and_redraw(Point(5, 8), images[KIN]);
-	set_and_redraw(Point(4, 8), images[OU]);
-	set_and_redraw(Point(0, 8), images[KYOUSHA]);
-	set_and_redraw(Point(1, 8), images[KEIMA]);
-	set_and_redraw(Point(2, 8), images[GIN]);
-	set_and_redraw(Point(3, 8), images[KIN]);
-	set_and_redraw(Point(1, 7), images[HISHA]);
-	set_and_redraw(Point(7, 7), images[KAKU]);
+      set_and_redraw(Point(8, 8), KYOUSHA);
+	set_and_redraw(Point(7, 8), KEIMA);
+	set_and_redraw(Point(6, 8), GIN);
+	set_and_redraw(Point(5, 8), KIN);
+	set_and_redraw(Point(4, 8), OU);
+	set_and_redraw(Point(0, 8), KYOUSHA);
+	set_and_redraw(Point(1, 8), KEIMA);
+	set_and_redraw(Point(2, 8), GIN);
+	set_and_redraw(Point(3, 8), KIN);
+	set_and_redraw(Point(1, 7), HISHA);
+	set_and_redraw(Point(7, 7), KAKU);
 	for(int i = 0;i < 9;i++)
-		set_and_redraw(Point(i, 6), images[HU]);
+		set_and_redraw(Point(i, 6), HU);
 
 	/*
 	 *的側
 	 */
-	set_and_redraw(Point(8, 0), images[EN_KYOUSHA]);
-	set_and_redraw(Point(7, 0), images[EN_KEIMA]);
-	set_and_redraw(Point(6, 0), images[EN_GIN]);
-	set_and_redraw(Point(5, 0), images[EN_KIN]);
-	set_and_redraw(Point(4, 0), images[EN_OU]);
-	set_and_redraw(Point(0, 0), images[EN_KYOUSHA]);
-	set_and_redraw(Point(1, 0), images[EN_KEIMA]);
-	set_and_redraw(Point(2, 0), images[EN_GIN]);
-	set_and_redraw(Point(3, 0), images[EN_KIN]);
-	set_and_redraw(Point(7, 1), images[EN_HISHA]);
-	set_and_redraw(Point(1, 1), images[EN_KAKU]);
+	set_and_redraw(Point(8, 0), EN_KYOUSHA);
+	set_and_redraw(Point(7, 0), EN_KEIMA);
+	set_and_redraw(Point(6, 0), EN_GIN);
+	set_and_redraw(Point(5, 0), EN_KIN);
+	set_and_redraw(Point(4, 0), EN_OU);
+	set_and_redraw(Point(0, 0), EN_KYOUSHA);
+	set_and_redraw(Point(1, 0), EN_KEIMA);
+	set_and_redraw(Point(2, 0), EN_GIN);
+	set_and_redraw(Point(3, 0), EN_KIN);
+	set_and_redraw(Point(7, 1), EN_HISHA);
+	set_and_redraw(Point(1, 1), EN_KAKU);
 	for(int i = 0;i < 9;i++)
-		set_and_redraw(Point(i, 2), images[EN_HU]);
+		set_and_redraw(Point(i, 2), EN_HU);
 
 }
 
