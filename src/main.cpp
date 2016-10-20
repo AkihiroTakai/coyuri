@@ -14,7 +14,8 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	NULL,
 	hu_wcm,
 	kyousha_wcm,
-	keima_wcm
+	keima_wcm,
+	gin_wcm
 };
 
 int main(int argc, char **argv){

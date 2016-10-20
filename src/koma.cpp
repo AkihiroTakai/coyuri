@@ -34,7 +34,7 @@ bool my_koma(int x, int y){
 }
 
 bool can_target(int x, int y){
-	return empty(x, y) || enemy(x, y) && x > 0 && x < 9 && y > 0 && y < 0;
+	return (empty(x, y) || enemy(x, y)) && (x > 0 && x < 9) && (y > 0 && y < 9);
 }
 
 bool jands_one_wcm(int x, int y, std::vector<Point> *points){
