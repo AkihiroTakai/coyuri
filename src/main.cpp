@@ -5,7 +5,7 @@
 #include "../include/type.hpp"
 #include "../include/prot.hpp"
 
-const int IMAGE_SIDE = 45;
+const int IMAGE_SIDE = 46;
 Fl_Box *visual_ban[9][9];
 KOMA_TYPE main_ban[9][9];
 Fl_PNG_Image *images[18];
@@ -22,10 +22,14 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	ou_wcm
 };
 
+void cb_test(Fl_Widget* widget){
+	exit(1);
+}
+
 int main(int argc, char **argv){
 
 	fl_register_images();
-	Fl_Window win(710, 800, "Coyuri");
+	Fl_Window win(740, 900, "Coyuri");
 
       for(int y = 1;y < 10;y++){
 		for(int x = 1;x < 10;x++){
@@ -47,6 +51,7 @@ int main(int argc, char **argv){
 			visual_ban[x-1][y-1] = fl_box;
 		}
 	}
+	visual_ban[0][0]->callback(cb_test);
 
 	/*
 	 *入力ホームと実行ボタン
