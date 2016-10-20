@@ -22,3 +22,21 @@ std::vector<Point> kyousha_wcm(Point point){
 	}
 	return points;
 }
+
+//桂馬のwcm関数
+std::vector<Point> keima_wcm(Point p){
+	std::vector<Point> points;
+
+	/*
+	 *２つ前に進めない位置にいる場合移動できない
+	 */
+	if(p.get_y() <= 2) return points;
+
+	if(can_target(p.get_x() + 1, p.get_y() - 2))
+		points.push_back(Point(p.get_x() + 1, p.get_y() - 2));
+
+	if(can_target(p.get_x() - 1, p.get_y() - 2))
+		points.push_back(Point(p.get_x() - 1, p.get_y() - 2));
+
+	return points;
+}
