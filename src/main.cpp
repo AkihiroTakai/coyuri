@@ -7,8 +7,11 @@
 
 const int IMAGE_SIDE = 70;
 Masu *visual_ban[9][9];
+Fl_Box *target_ban[9][9];
 KOMA_TYPE main_ban[9][9];
 Fl_PNG_Image *images[18];
+Fl_PNG_Image *clear;
+
 std::vector<Point> (*wcm_ftable[])(Point point) = {
 	NULL,
 	NULL,
@@ -37,10 +40,12 @@ int main(int argc, char **argv){
 			 *visual_banのためのboxを確保
 			 */
 			Masu *fl_box = new Masu(x*IMAGE_SIDE, y*IMAGE_SIDE, IMAGE_SIDE, IMAGE_SIDE);
-			/*
+			Masu *targ_box = new Masu(x*IMAGE_SIDE, y*IMAGE_SIDE, IMAGE_SIDE, IMAGE_SIDE);
+                  /*
 			 *画像は最初何も入れない
 			 */
 			fl_box->image(NULL);
+			targ_box->image(NULL);
 			/*
 			 *裏で動く盤面変数はすべてEMPTYで初期化
 			 */
@@ -49,8 +54,10 @@ int main(int argc, char **argv){
 			 *visual_banにNULLの画像が入ったboxを代入していく
 			 */
 			visual_ban[x-1][y-1] = fl_box;
+			target_ban[x-1][y-1] = targ_box;
 		}
 	}
+	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 
 	/*
 	 *入力ホームと実行ボタン
@@ -98,3 +105,18 @@ void set_and_redraw(Point p, KOMA_TYPE type){
 	main_ban[9-p.get_x()][p.get_y()-1] = type;
 }
 
+void target_masu(Point p){
+	target_ban[9-p.get_x()][p.get_y()-1]->image(images[TARGET]);
+	target_ban[9-p.get_x()][p.get_y()-1]->redraw();
+}
+
+void target_clear(){
+	for(int x = 0;x < 9;x++){
+		for(int y = 0;y < 9;y++){
+			if(target_ban[x][y] != NULL){
+				target_ban[x][y]->image(images[main_ban[x][y]]);
+				target_ban[x][y]->redraw();
+			}
+		}
+	}
+}
