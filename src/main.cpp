@@ -16,7 +16,8 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	kyousha_wcm,
 	keima_wcm,
 	gin_wcm,
-	kin_wcm
+	kin_wcm,
+	hisha_wcm
 };
 
 int main(int argc, char **argv){
@@ -67,9 +68,10 @@ int main(int argc, char **argv){
 void draw_koma(Fl_Widget* widget, void *v){
 	std::string input = ((Fl_Input*)((void**)v)[0])->value();
 	int x, y;
-	x = ctoi(input.c_str()[0])-1;
-	y = ctoi(input.c_str()[1])-1;
-	for(Point point : wcm_ftable[main_ban[x][y]](Point(x, y))){
+	x = ctoi(input.c_str()[0]);
+	y = ctoi(input.c_str()[1]);
+	for(Point point : wcm_ftable[main_ban[7-x][y-1]](Point(x, y))){
+		std::cout << point.get_x() << point.get_y() << std::endl;
 		set_and_redraw(point, TARGET);
 	}
 }
@@ -86,7 +88,7 @@ int ctoi(char ch){
  *駒を版にセットし再描画する関数
  */
 void set_and_redraw(Point p, KOMA_TYPE type){
-	visual_ban[8-p.get_x()][p.get_y()]->image(images[type]);
-	visual_ban[8-p.get_x()][p.get_y()]->redraw();
-	main_ban[8-p.get_x()][p.get_y()] = type;
+	visual_ban[9-p.get_x()][p.get_y()-1]->image(images[type]);
+	visual_ban[9-p.get_x()][p.get_y()-1]->redraw();
+	main_ban[9-p.get_x()][p.get_y()-1] = type;
 }

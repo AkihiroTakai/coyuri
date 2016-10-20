@@ -22,15 +22,15 @@ std::vector<Point> where_can_move(Point point, KOMA_TYPE type){
 }
 
 bool empty(int x, int y){
-	return main_ban[x][y] == EMPTY;
+	return main_ban[8-x][y-1] == EMPTY;
 }
 
 bool enemy(int x, int y){
-	return main_ban[x][y] >= EN_HU && main_ban[x][y] <= EN_OU;
+	return main_ban[8-x][y-1] >= EN_HU && main_ban[8-x][y-1] <= EN_OU;
 }
 
 bool my_koma(int x, int y){
-	return main_ban[x][y] > TARGET && main_ban[x][y] < EN_HU;
+	return main_ban[8-x][y-1] > TARGET && main_ban[8-x][y-1] < EN_HU;
 }
 
 bool can_target(int x, int y){
