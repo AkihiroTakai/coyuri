@@ -21,33 +21,6 @@ std::vector<Point> where_can_move(Point point, KOMA_TYPE type){
 	return points;
 }
 
-std::vector<Point> hu_wcm(Point point){
-	std::vector<Point> points;
-
-	jands_one_wcm(point.get_x(), point.get_y()-1, &points);
-      /*
-	 *もしも敵の一番置くまで進んでいたら何も挿入せずに返す
-	 */
-	//if(point.get_y() == 1) return points;
-	/*
-	 *座標を挿入
-	 */
-	//points.push_back(Point(point.get_x(), point.get_y()-1));
-
-	return points;
-}
-
-std::vector<Point> kyousha_wcm(Point point){
-	std::vector<Point> points;
-      int x = point.get_x(), y = point.get_y();
-      while(y > 0){
-		y--;
-		if(main_ban[x][y] != EMPTY) break;
-		points.push_back(Point(x, y));
-	}
-	return points;
-}
-
 bool empty(int x, int y){
 	return main_ban[x][y] == EMPTY;
 }
