@@ -106,6 +106,7 @@ void set_and_redraw(Point p, KOMA_TYPE type){
 }
 
 void target_masu(Point p){
+	std::cout << p.get_x() << "a:a" << p.get_y() << std::endl;
 	target_ban[9-p.get_x()][p.get_y()-1]->image(images[TARGET]);
 	target_ban[9-p.get_x()][p.get_y()-1]->redraw();
 }

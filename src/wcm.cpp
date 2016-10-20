@@ -19,11 +19,9 @@ std::vector<Point> hu_wcm(Point point){
 
 std::vector<Point> kyousha_wcm(Point point){
 	std::vector<Point> points;
-      int x = point.get_x(), y = point.get_y();
-      while(y > 0){
+	int y = point.get_y()-1;
+	while(jands_one_wcm(point.get_x(), y, &points)){
 		y--;
-		if(main_ban[x][y] != EMPTY) break;
-		points.push_back(Point(x, y));
 	}
 	return points;
 }
