@@ -60,3 +60,28 @@ std::vector<Point> gin_wcm(Point p){
 
 	return points;
 }
+
+//銀のwcm関数
+std::vector<Point> kin_wcm(Point p){
+	std::vector<Point> points;
+
+	/*
+	 *前方方向の移動可能判定
+	 */
+	jands_one_wcm(p.get_x()-1, p.get_y()-1, &points);
+	jands_one_wcm(p.get_x(), p.get_y()-1, &points);
+	jands_one_wcm(p.get_x()+1, p.get_y()-1, &points);
+
+	/*
+	 *横方向の移動可能判定
+	 */
+	jands_one_wcm(p.get_x()-1, p.get_y(), &points);
+	jands_one_wcm(p.get_x()+1, p.get_y(), &points);
+
+	/*
+	 *後方方向の移動可能判定
+	 */
+	jands_one_wcm(p.get_x(), p.get_y()+1, &points);
+
+	return points;
+}

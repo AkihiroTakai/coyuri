@@ -18,5 +18,6 @@ std::vector<Point> hu_wcm(Point point);
 std::vector<Point> kyousha_wcm(Point point);
 std::vector<Point> keima_wcm(Point p);
 std::vector<Point> gin_wcm(Point p);
+std::vector<Point> kin_wcm(Point p);
 
 #endif
