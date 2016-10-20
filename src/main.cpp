@@ -5,8 +5,8 @@
 #include "../include/type.hpp"
 #include "../include/prot.hpp"
 
-const int IMAGE_SIDE = 46;
-Fl_Box *visual_ban[9][9];
+const int IMAGE_SIDE = 70;
+Masu *visual_ban[9][9];
 KOMA_TYPE main_ban[9][9];
 Fl_PNG_Image *images[18];
 std::vector<Point> (*wcm_ftable[])(Point point) = {
@@ -31,12 +31,12 @@ int main(int argc, char **argv){
 	fl_register_images();
 	Fl_Window win(740, 900, "Coyuri");
 
-      for(int y = 1;y < 10;y++){
-		for(int x = 1;x < 10;x++){
+      for(int y = 1;y <= 9;y++){
+		for(int x = 1;x <= 9;x++){
 			/*
 			 *visual_banのためのboxを確保
 			 */
-			Fl_Box *fl_box = new Fl_Box(x*IMAGE_SIDE, y*IMAGE_SIDE, x*IMAGE_SIDE+70, y*IMAGE_SIDE+70);
+			Masu *fl_box = new Masu(x*IMAGE_SIDE, y*IMAGE_SIDE, IMAGE_SIDE, IMAGE_SIDE);
 			/*
 			 *画像は最初何も入れない
 			 */
@@ -51,7 +51,6 @@ int main(int argc, char **argv){
 			visual_ban[x-1][y-1] = fl_box;
 		}
 	}
-	visual_ban[0][0]->callback(cb_test);
 
 	/*
 	 *入力ホームと実行ボタン
@@ -98,3 +97,4 @@ void set_and_redraw(Point p, KOMA_TYPE type){
 	visual_ban[9-p.get_x()][p.get_y()-1]->redraw();
 	main_ban[9-p.get_x()][p.get_y()-1] = type;
 }
+

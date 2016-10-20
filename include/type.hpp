@@ -35,4 +35,14 @@ public:
 	void set_y(int y);
 };
 
+class Masu : public Fl_Box {
+	int X, Y;
+	int handle(int event);
+
+public:
+	Masu(int x, int y, int width, int height);
+	int get_x(){return X;}
+	int get_y(){return Y;};
+};
+
 #endif
