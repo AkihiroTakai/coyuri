@@ -12,7 +12,8 @@ Fl_PNG_Image *images[18];
 std::vector<Point> (*wcm_ftable[])(Point point) = {
 	NULL,
 	NULL,
-	hu_wcm
+	hu_wcm,
+	kyousha_wcm
 };
 
 int main(int argc, char **argv){
@@ -65,8 +66,7 @@ void draw_koma(Fl_Widget* widget, void *v){
 	int x, y;
 	x = ctoi(input.c_str()[0])-1;
 	y = ctoi(input.c_str()[1])-1;
-	std::cout << wcm_ftable[HU](Point(x, y)).size() << std::endl;
-	for(Point point : wcm_ftable[HU](Point(x, y))){
+	for(Point point : wcm_ftable[main_ban[x][y]](Point(x, y))){
 		set_and_redraw(point, TARGET);
 	}
 }
