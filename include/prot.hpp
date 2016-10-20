@@ -20,5 +20,6 @@ std::vector<Point> keima_wcm(Point p);
 std::vector<Point> gin_wcm(Point p);
 std::vector<Point> kin_wcm(Point p);
 std::vector<Point> hisha_wcm(Point p);
+std::vector<Point> kaku_wcm(Point p);
 
 #endif

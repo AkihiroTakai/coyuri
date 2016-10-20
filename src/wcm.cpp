@@ -98,10 +98,8 @@ std::vector<Point> hisha_wcm(Point p){
 	/*
 	 *左方向の移動可能判定
 	 */
-	std::cout << p.get_x() << ":" << p.get_y() << std::endl;
 	for(int x = p.get_x()-1;x > 0;x--){
 		if(!jands_one_wcm(x, p.get_y(), &points)) break;
-		std::cout << x << ":" << p.get_y() << std::endl;
 	}
 
 	/*
@@ -109,7 +107,6 @@ std::vector<Point> hisha_wcm(Point p){
 	 */
 	for(int x = p.get_x()+1;x <= 9;x++){
 		if(!jands_one_wcm(x, p.get_y(), &points)) break;
-		std::cout << x << ":" << p.get_y() << std::endl;
 	}
 
 	/*
@@ -124,6 +121,52 @@ std::vector<Point> hisha_wcm(Point p){
 	 */
 	for(int y = p.get_y()-1;y > 0;y--){
 		if(!jands_one_wcm(p.get_y(), y, &points)) break;
+	}
+
+	return points;
+}
+
+//角のwcm関数
+std::vector<Point> kaku_wcm(Point p){
+	std::vector<Point> points;
+
+	int x = p.get_x()-1, y = p.get_y()-1;
+	/*
+	 *右上方向の移動可能判定
+	 */
+      while(jands_one_wcm(x, y, &points)){
+		x--;
+		y--;
+	}
+
+	x = p.get_x()+1;
+	y = p.get_y()-1;
+	/*
+	 *左上方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x++;
+		y--;
+	}
+
+      x = p.get_x()-1;
+	y = p.get_y()+1;
+	/*
+	 *右下方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x--;
+		y++;
+	}
+
+	x = p.get_x()+1;
+	y = p.get_y()+1;
+	/*
+	 *右下方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x++;
+		y++;
 	}
 
 	return points;
