@@ -100,29 +100,30 @@ std::vector<Point> hisha_wcm(Point p){
 	 */
 	std::cout << p.get_x() << ":" << p.get_y() << std::endl;
 	for(int x = p.get_x()-1;x > 0;x--){
-		if(jands_one_wcm(x, p.get_y(), &points)) break;
+		if(!jands_one_wcm(x, p.get_y(), &points)) break;
 		std::cout << x << ":" << p.get_y() << std::endl;
 	}
 
 	/*
 	 *左方向の移動可能判定
 	 */
-	for(int x = p.get_x()-1;x > 0;x--){
-		if(jands_one_wcm(x, p.get_y(), &points)) break;
+	for(int x = p.get_x()+1;x <= 9;x++){
+		if(!jands_one_wcm(x, p.get_y(), &points)) break;
+		std::cout << x << ":" << p.get_y() << std::endl;
 	}
 
 	/*
 	 *下方向の移動可能判定
 	 */
-	for(int y = p.get_y()+1;y < 9;y++){
-		if(jands_one_wcm(p.get_y(), y, &points)) break;
+	for(int y = p.get_y()+1;y <= 9;y++){
+		if(!jands_one_wcm(p.get_y(), y, &points)) break;
 	}
 
 	/*
 	 *上方向の移動可能判定
 	 */
 	for(int y = p.get_y()-1;y > 0;y--){
-		if(jands_one_wcm(p.get_y(), y, &points)) break;
+		if(!jands_one_wcm(p.get_y(), y, &points)) break;
 	}
 
 	return points;

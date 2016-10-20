@@ -70,8 +70,7 @@ void draw_koma(Fl_Widget* widget, void *v){
 	int x, y;
 	x = ctoi(input.c_str()[0]);
 	y = ctoi(input.c_str()[1]);
-	for(Point point : wcm_ftable[main_ban[7-x][y-1]](Point(x, y))){
-		std::cout << point.get_x() << point.get_y() << std::endl;
+	for(Point point : wcm_ftable[main_ban[9-x][y-1]](Point(x, y))){
 		set_and_redraw(point, TARGET);
 	}
 }

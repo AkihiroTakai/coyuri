@@ -22,19 +22,19 @@ std::vector<Point> where_can_move(Point point, KOMA_TYPE type){
 }
 
 bool empty(int x, int y){
-	return main_ban[8-x][y-1] == EMPTY;
+	return main_ban[9-x][y-1] == EMPTY;
 }
 
 bool enemy(int x, int y){
-	return main_ban[8-x][y-1] >= EN_HU && main_ban[8-x][y-1] <= EN_OU;
+	return main_ban[9-x][y-1] >= EN_HU && main_ban[9-x][y-1] <= EN_OU;
 }
 
 bool my_koma(int x, int y){
-	return main_ban[8-x][y-1] > TARGET && main_ban[8-x][y-1] < EN_HU;
+	return main_ban[9-x][y-1] > TARGET && main_ban[9-x][y-1] < EN_HU;
 }
 
 bool can_target(int x, int y){
-	return (empty(x, y) || enemy(x, y)) && (x > 0 && x < 9) && (y > 0 && y < 9);
+	return (empty(x, y) || enemy(x, y)) && (x > 0 && x <= 9) && (y > 0 && y <= 9);
 }
 
 bool jands_one_wcm(int x, int y, std::vector<Point> *points){
