@@ -24,5 +24,6 @@ std::vector<Point> kaku_wcm(Point p);
 std::vector<Point> ou_wcm(Point p);
 void target_masu(Point p);
 void target_clear();
+void move(Point replace);
 
 #endif

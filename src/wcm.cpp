@@ -190,3 +190,7 @@ std::vector<Point> ou_wcm(Point p){
 
 	return points;
 }
+
+std::vector<Point> target_move(Point p){
+	move(p);
+}

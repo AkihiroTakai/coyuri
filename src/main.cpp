@@ -11,6 +11,7 @@ Fl_Box *target_ban[9][9];
 KOMA_TYPE main_ban[9][9];
 Fl_PNG_Image *images[18];
 Fl_PNG_Image *clear;
+Point TARGET_KOMA;
 
 std::vector<Point> (*wcm_ftable[])(Point point) = {
 	NULL,
@@ -84,9 +85,11 @@ void draw_koma(Fl_Widget* widget, void *v){
 	x = ctoi(input.c_str()[0]);
 	y = ctoi(input.c_str()[1]);
 	for(Point point : wcm_ftable[main_ban[9-x][y-1]](Point(x, y))){
+		
 		set_and_redraw(point, TARGET);
 	}
 }
+
 
 /*
  *charからintへ変換
@@ -106,7 +109,7 @@ void set_and_redraw(Point p, KOMA_TYPE type){
 }
 
 void target_masu(Point p){
-	std::cout << p.get_x() << "a:a" << p.get_y() << std::endl;
+	main_ban[9-p.get_x()][p.get_y()-1] = TARGET;
 	target_ban[9-p.get_x()][p.get_y()-1]->image(images[TARGET]);
 	target_ban[9-p.get_x()][p.get_y()-1]->redraw();
 }
@@ -114,7 +117,8 @@ void target_masu(Point p){
 void target_clear(){
 	for(int x = 0;x < 9;x++){
 		for(int y = 0;y < 9;y++){
-			if(target_ban[x][y] != NULL){
+			if(main_ban[x][y] == TARGET){
+				main_ban[x][y] = EMPTY;
 				target_ban[x][y]->image(images[main_ban[x][y]]);
 				target_ban[x][y]->redraw();
 			}
