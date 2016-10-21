@@ -38,6 +38,10 @@ bool can_target(int x, int y){
 }
 
 bool jands_one_wcm(int x, int y, std::vector<Point> *points){
+	if(enemy(x, y)){
+		points->push_back(Point(x, y));
+		return false;
+	}
 	if(can_target(x, y)){
 		points->push_back(Point(x, y));
 		return true;
