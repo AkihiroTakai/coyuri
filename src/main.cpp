@@ -14,7 +14,7 @@ Fl_PNG_Image *clear;
 Point TARGET_KOMA;
 
 std::vector<Point> (*wcm_ftable[])(Point point) = {
-	NULL,
+	null_wcm,
 	NULL,
 	hu_wcm,
 	kyousha_wcm,

@@ -14,6 +14,7 @@ bool enemy(int x, int y);
 bool my_koma(int x, int y);
 bool can_target(int x, int y);
 bool jands_one_wcm(int x, int y, std::vector<Point> *points);
+std::vector<Point> null_wcm(Point p);
 std::vector<Point> hu_wcm(Point point);
 std::vector<Point> kyousha_wcm(Point point);
 std::vector<Point> keima_wcm(Point p);

@@ -6,6 +6,13 @@
  *wcm関数内では通常の将棋の盤面を操作する感じで行う
  */
 
+//何もしないwcm関数
+std::vector<Point> null_wcm(Point p){
+	std::vector<Point> points;
+	return points;
+}
+
+//歩のwcm関数
 std::vector<Point> hu_wcm(Point point){
 	std::vector<Point> points;
 
