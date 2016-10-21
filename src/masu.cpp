@@ -13,7 +13,7 @@ int Masu::handle(int event){
 	if(event == FL_RELEASE){
 		int x = (X/70) - 1, y = (Y/70) - 1;
 		std::cout << "KOMA_TYPE" << main_ban[x][y] << std::endl;;
-		if(main_ban[x][y] == TARGET){
+		if(target_ban[x][y]->image() == images[TARGET]){
 			std::cout << "MOVE_IF_IN\n";
 			move(Point(std::abs(x-9), y+1));
 			target_clear();
