@@ -6,7 +6,7 @@ SRC=./src
 BIN=./bin
 CFLAGS=`fltk-config --cxxflags`
 LDFLAGS=`fltk-config --ldflags --use-images`
-OBJS = $(DST)/point.o $(DST)/main.o $(DST)/init.o $(DST)/koma.o $(DST)/wcm.o $(DST)/masu.o $(DST)/move.o
+OBJS = $(DST)/point.o $(DST)/main.o $(DST)/init.o $(DST)/koma.o $(DST)/wcm.o $(DST)/masu.o $(DST)/move.o $(DST)/draw.o
 
 coyuri: $(OBJS)
 	$(CXX) -o $(BIN)/coyuri  $(OBJS) $(LDFLAGS)

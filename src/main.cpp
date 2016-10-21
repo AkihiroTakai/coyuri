@@ -26,10 +26,6 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	ou_wcm
 };
 
-void cb_test(Fl_Widget* widget){
-	exit(1);
-}
-
 int main(int argc, char **argv){
 
 	fl_register_images();
@@ -60,14 +56,6 @@ int main(int argc, char **argv){
 	}
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 
-	/*
-	 *入力ホームと実行ボタン
-	 */
-	Fl_Input *input = new Fl_Input(250, 740, 70, 30, "手:");
-	Fl_Button *button = new Fl_Button(350, 730, 50, 50, "打つ");
-
-	void* v[] = {input};
-	button->callback(draw_koma, v);
 	init();
 	win.end();
 	win.show(argc, argv);
@@ -75,50 +63,10 @@ int main(int argc, char **argv){
 	return Fl::run();
 }
 
-
-/*
- *駒を描画する関数
- */
-void draw_koma(Fl_Widget* widget, void *v){
-	std::string input = ((Fl_Input*)((void**)v)[0])->value();
-	int x, y;
-	x = ctoi(input.c_str()[0]);
-	y = ctoi(input.c_str()[1]);
-	for(Point point : wcm_ftable[main_ban[9-x][y-1]](Point(x, y))){
-		set_and_redraw(point, TARGET);
-	}
-}
-
-
 /*
  *charからintへ変換
  */
 int ctoi(char ch){
 	if('0' <= ch && ch <= '9') return (ch-'0');
 	else return -1;
-}
-
-/*
- *駒を版にセットし再描画する関数
- */
-void set_and_redraw(Point p, KOMA_TYPE type){
-	visual_ban[9-p.get_x()][p.get_y()-1]->image(images[type]);
-	visual_ban[9-p.get_x()][p.get_y()-1]->redraw();
-	main_ban[9-p.get_x()][p.get_y()-1] = type;
-}
-
-void target_masu(Point p){
-	target_ban[9-p.get_x()][p.get_y()-1]->image(images[TARGET]);
-	target_ban[9-p.get_x()][p.get_y()-1]->redraw();
-}
-
-void target_clear(){
-	for(int x = 0;x < 9;x++){
-		for(int y = 0;y < 9;y++){
-			if(target_ban[x][y]->image() == images[TARGET]){
-				target_ban[x][y]->image(images[main_ban[x][y]]);
-				target_ban[x][y]->redraw();
-			}
-		}
-	}
 }
