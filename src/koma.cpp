@@ -38,7 +38,7 @@ bool can_target(int x, int y){
 }
 
 bool jands_one_wcm(int x, int y, std::vector<Point> *points){
-	if(enemy(x, y)){
+	if(enemy(x, y) && (x > 0 && x <= 9) && (y > 0 && y <= 9)){
 		points->push_back(Point(x, y));
 		return false;
 	}
