@@ -2,7 +2,6 @@
 #include "../../include/value.hpp"
 #include "../../include/prot.hpp"
 #include <cmath>
-#include <iostream>
 
 int EVAL(Node *node){
 	int score = 0;
@@ -15,7 +14,6 @@ int EVAL(Node *node){
 	 */
 	if(node->get_banmen()->find_koma(EN_OU).get_y() <= 3){
 		score += 5;
-		std::cout << "::::::::::::::::::::::::::::\n";
 	}
 
 	return score;

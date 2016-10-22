@@ -85,6 +85,6 @@ void put_koma_init(){
 void init(){
 	images_path_init();
 	put_koma_init();
-	Fl_Box *gyou = new Fl_Box(100, 20, 550, 65, "九         　八　           七　            六             五             四           　三             　二　            一");
-	Fl_Box *suji = new Fl_Box(650, 70, 110, 610, "1\n\n\n\n\n2\n\n\n\n\n3\n\n\n\n\n4\n\n\n\n\n5\n\n\n\n\n6\n\n\n\n\n7\n\n\n\n\n8\n\n\n\n\n9");
+	Fl_Box *gyou = new Fl_Box(100, 20, 560, 65, "9          　8　            7　            6               5              4             　3              　2　            1");
+	Fl_Box *suji = new Fl_Box(660, 78, 110, 610, "一\n\n\n\n\n二\n\n\n\n\n三\n\n\n\n\n四\n\n\n\n\n五\n\n\n\n\n六\n\n\n\n\n七\n\n\n\n\n八\n\n\n\n\n九");
 }

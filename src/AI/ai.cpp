@@ -18,6 +18,7 @@ int max(Node *node, int limit){
 	for(Node *banmen : *(node->get_children())){
 		score = min(banmen, limit-1);
 		if(score > score_max){
+
 			score_max = score;
 		}
 	}

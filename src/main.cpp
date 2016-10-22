@@ -36,7 +36,7 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 int main(int argc, char **argv){
 
 	fl_register_images();
-	Fl_Window win(740, 900, "Coyuri");
+	Fl_Window win(800, 900, "Coyuri");
 
       for(int y = 1;y <= 9;y++){
 		for(int x = 1;x <= 9;x++){
