@@ -11,7 +11,7 @@ int max(Node *node, int limit){
 	if(limit <= 0)
 		return EVAL(node);
 
-	int score, score_max;
+	int score = 0, score_max = -1;
 	//可能な手を生成
       EXPAND(node);
 
@@ -30,13 +30,13 @@ int min(Node *node, int limit){
 	if(limit <= 0)
 		return EVAL(node);
 
-	int score = 0, score_max = -10000;
+	int score = 0, score_max = 10000;
 	//可能な手を生成
       EXPAND(node);
 
 	for(Node *banmen : *(node->get_children())){
 		score = max(banmen, limit-1);
-		if(score > score_max){
+		if(score < score_max){
 			score_max = score;
 		}
 	}

@@ -2,12 +2,23 @@
 #include "../../include/value.hpp"
 #include "../../include/prot.hpp"
 #include <cmath>
+#include <iostream>
 
 int EVAL(Node *node){
-	/*
+	int score = 0;
+      /*
 	 *盤面を評価
 	 */
-	return 0;
+
+	/*
+	 *王が自分の陣地内にいれば評価値+5
+	 */
+	if(node->get_banmen()->find_koma(EN_OU).get_y() <= 3){
+		score += 5;
+		std::cout << "::::::::::::::::::::::::::::\n";
+	}
+
+	return score;
 }
 
 /*

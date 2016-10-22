@@ -16,6 +16,14 @@ int Masu::handle(int event){
 		if(target_ban[x][y]->image() == images[TARGET]){
 			std::cout << "MOVE_IF_IN\n";
 			move(Point(std::abs(x-9), y+1));
+			/*
+			 *AIのターン
+			 */
+			BANMEN *banmen = new BANMEN;
+			for(int x = 0;x < 9;x++)
+				for(int y = 0;y < 9;y++)
+					banmen->set_type(x, y, main_ban[x][y]);
+			ai_turn(banmen);
 			target_clear();
 			return 0;
 		}
@@ -27,14 +35,7 @@ int Masu::handle(int event){
 		for(Point point : wcm_ftable[main_ban[x][y]](Point(std::abs(x-9), y+1))){
 			target_masu(point);
 		}
-		/*
-		 *AIのターン
-		 */
-		BANMEN *banmen = new BANMEN;
-		for(int x = 0;x < 9;x++)
-			for(int y = 0;y < 9;y++)
-				banmen->set_type(x, y, main_ban[x][y]);
-		ai_turn(banmen);
+
 	}
 
 	return 1;

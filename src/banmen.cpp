@@ -16,6 +16,12 @@ void BANMEN::copy_banmen(BANMEN *original){
 	}
 }
 
+Point BANMEN::find_koma(KOMA_TYPE type){
+	for(int x = 0;x < 9;x++)
+		for(int y = 0;y < 9;y++)
+			if(banmen[x][y] == type) return Point(x, y);
+}
+
 Node::Node(BANMEN *ban, Node *pare){
 	banmen.copy_banmen(ban);
 	parent = pare;

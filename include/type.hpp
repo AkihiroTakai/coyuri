@@ -51,6 +51,7 @@ public:
 	KOMA_TYPE get_type(int x, int y);
 	void set_type(int x, int y, KOMA_TYPE type);
 	void copy_banmen(BANMEN *original);
+	Point find_koma(KOMA_TYPE type);
 };
 
 class Node {
