@@ -22,7 +22,15 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	kin_wcm,
 	hisha_wcm,
 	kaku_wcm,
-	ou_wcm
+	ou_wcm,
+	en_hu_wcm,
+	en_kyousha_wcm,
+	en_keima_wcm,
+	en_gin_wcm,
+	en_kin_wcm,
+	en_hisha_wcm,
+	en_kaku_wcm,
+	en_ou_wcm
 };
 
 int main(int argc, char **argv){
