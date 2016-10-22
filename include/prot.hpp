@@ -34,6 +34,9 @@ std::vector<Point> en_ou_wcm(Point p);
 void target_masu(Point p);
 void target_clear();
 void move(Point replace);
-int EVAL(BANMEN banmen);
+int EVAL(Node *node);
+void EXPAND(Node *node);
+int max(Node *node, int limit);
+int min(Node *node, int limit);
 
 #endif

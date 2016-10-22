@@ -45,6 +45,25 @@ public:
 	int get_y(){return Y;};
 };
 
-using BANMEN = KOMA_TYPE[9][9];
+class BANMEN {
+	KOMA_TYPE banmen[9][9];
+public:
+	KOMA_TYPE get_type(int x, int y);
+	void set_type(int x, int y, KOMA_TYPE type);
+	void copy_banmen(BANMEN *original);
+};
+
+class Node {
+
+	BANMEN banmen;
+	Node *parent;
+	std::vector<Node *> children;
+
+public:
+	Node(BANMEN *ban, Node *pare);
+	BANMEN *get_banmen();
+	std::vector<Node *> *get_children();
+
+};
 
 #endif

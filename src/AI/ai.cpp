@@ -1,38 +1,49 @@
+#include "../../include/type.hpp"
 #include "../../include/prot.hpp"
 
 /*
  *探索部分
  *探索の深さは2手先まで
  */
-int negamax(int alpha, int beta, int limit){
-	/*
-	 *何もしない
-	 */
+int max(Node *node, int limit){
 
 	if(limit <= 0)
-		return EVAL(NULL);
+		return EVAL(node);
 
 	int score, score_max;
-
-	/*
 	//可能な手を生成
-	std::vector<BANMEN> nodes;
-	nodes.push_back(NULL);
+      EXPAND(node);
 
-	
-	for(BANMEN banmen : nodes){
-		score = -negamax(-beta, -alpha, limit-1);
-
-		if(score >= beta){
-			return score;
-		}
-
+	for(Node *banmen : *(node->get_children())){
+		score = min(banmen, limit-1);
 		if(score > score_max){
 			score_max = score;
-			alpha = score_max;
 		}
 	}
-	*/
 
 	return score_max;
+}
+
+int min(Node *node, int limit){
+
+	if(limit <= 0)
+		return EVAL(node);
+
+	int score, score_max;
+	//可能な手を生成
+      EXPAND(node);
+
+	for(Node *banmen : *(node->get_children())){
+		score = max(banmen, limit-1);
+		if(score > score_max){
+			score_max = score;
+		}
+	}
+
+	return score_max;
+}
+
+
+Point decide(BANMEN banmen){
+
 }
