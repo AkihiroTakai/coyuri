@@ -1,5 +1,6 @@
 #include "../../include/type.hpp"
 #include "../../include/prot.hpp"
+#include <iostream>
 
 /*
  *探索部分
@@ -29,7 +30,7 @@ int min(Node *node, int limit){
 	if(limit <= 0)
 		return EVAL(node);
 
-	int score, score_max;
+	int score = 0, score_max = -10000;
 	//可能な手を生成
       EXPAND(node);
 
@@ -44,6 +45,7 @@ int min(Node *node, int limit){
 }
 
 
-Point decide(BANMEN banmen){
-
+void ai_turn(BANMEN *banmen){
+	Node *root = new Node(banmen, NULL);
+	std::cout << max(root, 2) << std::endl;
 }

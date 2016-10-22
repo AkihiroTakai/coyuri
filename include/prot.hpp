@@ -36,6 +36,7 @@ void target_clear();
 void move(Point replace);
 int EVAL(Node *node);
 void EXPAND(Node *node);
+void ai_turn(BANMEN *banmen);
 int max(Node *node, int limit);
 int min(Node *node, int limit);
 
