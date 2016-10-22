@@ -26,5 +26,6 @@ std::vector<Point> ou_wcm(Point p);
 void target_masu(Point p);
 void target_clear();
 void move(Point replace);
+int EVAL(BANMEN banmen);
 
 #endif

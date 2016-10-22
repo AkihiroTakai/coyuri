@@ -45,4 +45,6 @@ public:
 	int get_y(){return Y;};
 };
 
+using BANMEN = KOMA_TYPE[9][9];
+
 #endif

@@ -1,7 +1,6 @@
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Button.H>
 #include <iostream>
-#include <functional>
 #include "../include/type.hpp"
 #include "../include/prot.hpp"
 
@@ -55,7 +54,6 @@ int main(int argc, char **argv){
 		}
 	}
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
-
 	init();
 	win.end();
 	win.show(argc, argv);
