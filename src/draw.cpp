@@ -1,5 +1,4 @@
 #include "../include/type.hpp"
-#include "../include/banmen.hpp"
 #include "../include/value.hpp"
 
 /*

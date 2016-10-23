@@ -66,5 +66,8 @@ void ai_turn(Node *root){
 		}
 		std::cout << std::endl;
 	}
-	
+	//delete root;
+	//root = NULL;
+	//delete node;
+	//node = NULL;
 }
