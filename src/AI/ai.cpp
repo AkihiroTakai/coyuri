@@ -16,13 +16,14 @@ Node *max(Node *node, int limit){
 	}
 
 	int score = 0, score_max = -1;
-	Node *te;
+	Node *te = NULL;
 	//可能な手を生成
       EXPAND(node);
 
 	for(Node * & banmen : *(node->get_children())){
 		score = min(banmen, limit-1)->get_evalue();
 		if(score > score_max){
+			delete te;
 			te = banmen;
 			te->set_evalue(score);
 			score_max = score;
@@ -43,13 +44,14 @@ Node *min(Node *node, int limit){
 	}
 
 	int score = 0, score_max = 10000;
-	Node *te;
+	Node *te = NULL;
 	//可能な手を生成
       EXPAND(node);
 
 	for(Node * & banmen : *(node->get_children())){
 		score = max(banmen, limit-1)->get_evalue();
 		if(score < score_max){
+			delete te;
 			te = banmen;
 			te->set_evalue(score);
 			score_max = score;
@@ -72,4 +74,9 @@ void ai_turn(Node *root){
 		}
 		std::cout << std::endl;
 	}
+	std::cout << "eval:" << node->get_evalue() << std::endl;
+	delete node;
+	node = NULL;
+	delete root;
+	root = NULL;
 }

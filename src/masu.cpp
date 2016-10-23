@@ -14,7 +14,6 @@ int Masu::handle(int event){
 		int x = (X/70) - 1, y = (Y/70) - 1;
 		std::cout << "KOMA_TYPE" << main_ban[x][y] << std::endl;
 		if(target_ban[x][y]->image() == images[TARGET]){
-			std::cout << "MOVE_IF_IN\n";
 			move(Point(std::abs(x-9), y+1));
 			target_clear();
 			/*
@@ -35,7 +34,6 @@ int Masu::handle(int event){
 		target_clear();
 		TARGET_KOMA.set_x(x);
 		TARGET_KOMA.set_y(y);
-		std::cout << "masu_cpp 25 " << x << ":" << y << std::endl;
 		std::cout << "EVENT!!!!\n";
 		for(Point point : wcm_ftable[main_ban[x][y]](Point(std::abs(x-9), y+1))){
 			target_masu(point);
