@@ -15,7 +15,7 @@ int Masu::handle(int event){
 		std::cout << "KOMA_TYPE" << main_ban[x][y] << std::endl;
 		if(target_ban[x][y]->image() == images[TARGET]){
 			move(Point(std::abs(x-9), y+1));
-			target_clear();
+			
 			/*
 			 *AIのターン
 			 */
@@ -29,6 +29,7 @@ int Masu::handle(int event){
 
 			ai_turn(root);
 			destroy_tree(root);
+			target_clear();
 			return 0;
 		}
 		target_clear();

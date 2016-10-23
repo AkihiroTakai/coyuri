@@ -1,5 +1,6 @@
 #include "../../include/type.hpp"
 #include "../../include/prot.hpp"
+#include "../../include/value.hpp"
 #include <iostream>
 #include <cmath>
 #include <stdio.h>
@@ -29,8 +30,8 @@ Node *max(Node *node, int limit){
 			score_max = score;
 		}else{
 			delete banmen;
-			banmen = NULL;
 		}
+		banmen = NULL;
 	}
 
 	return te;
@@ -57,8 +58,8 @@ Node *min(Node *node, int limit){
 			score_max = score;
 		}else{
 			delete banmen;
-			banmen = NULL;
 		}
+		banmen = NULL;
 	}
 
 	return te;
@@ -74,6 +75,7 @@ void ai_turn(Node *root){
 		}
 		std::cout << std::endl;
 	}
+
 	std::cout << "eval:" << node->get_evalue() << std::endl;
 	delete node;
 	node = NULL;
