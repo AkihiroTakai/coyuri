@@ -30,8 +30,9 @@ Node *max(Node *node, int limit){
 			score_max = score;
 		}else{
 			delete banmen;
+			banmen = NULL;
 		}
-		banmen = NULL;
+
 	}
 
 	return te;
@@ -52,14 +53,15 @@ Node *min(Node *node, int limit){
 	for(Node * & banmen : *(node->get_children())){
 		score = max(banmen, limit-1)->get_evalue();
 		if(score < score_max){
+
 			delete te;
 			te = banmen;
 			te->set_evalue(score);
 			score_max = score;
 		}else{
 			delete banmen;
+			banmen = NULL;
 		}
-		banmen = NULL;
 	}
 
 	return te;
@@ -67,6 +69,7 @@ Node *min(Node *node, int limit){
 
 
 void ai_turn(Node *root){
+	
 	Node *node = max(root, 4);
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
@@ -77,7 +80,8 @@ void ai_turn(Node *root){
 	}
 
 	std::cout << "eval:" << node->get_evalue() << std::endl;
-	destroy_tree(root);
+	
+	//destroy_tree(root);
 /*
   delete node;
   node = NULL;
