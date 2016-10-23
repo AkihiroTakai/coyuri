@@ -7,6 +7,7 @@ BANMEN::BANMEN(){
 		banmen[i] = new KOMA_TYPE[9];
 }
 
+
 BANMEN::~BANMEN(){
 	for(int i = 0;i < 9;i++)
 		delete[] banmen[i];
@@ -20,6 +21,7 @@ void BANMEN::set_type(int x, int y, KOMA_TYPE type){
 	banmen[x][y] = type;
 }
 
+
 void BANMEN::copy_banmen(BANMEN *original){
 	for(int x = 0;x < 9;x++){
 		for(int y = 0;y < 9;y++){
@@ -27,6 +29,7 @@ void BANMEN::copy_banmen(BANMEN *original){
 		}
 	}
 }
+
 
 Point BANMEN::find_koma(KOMA_TYPE type){
 	for(int x = 0;x < 9;x++)
@@ -40,11 +43,8 @@ Point BANMEN::find_koma(KOMA_TYPE type){
 }
 
 Node::~Node(){
-	if(!children.empty()){
-		for(Node *child : children){
-			delete child->get_banmen();
-		}
-	}
+	std::vector<Node *>().swap(children);
+	delete banmen;
 }
 
 Node::Node(BANMEN *ban, Node *pare){
@@ -70,11 +70,14 @@ void Node::set_evalue(int value){
 
 void destroy_tree(Node *root){
 	for(Node *node : *root->get_children()){
-		if(node->get_children()->empty()){
-			std::cout << "delete\n";
-			delete node->get_banmen();
+		if(node == NULL) continue;
+		if(node->get_children()->size() > 0){
+			delete node;
 		}else{
+			std::cout << "in\n";
+			std::cout << node->get_children()->empty() << std::endl;
 			destroy_tree(node);
+			delete node;
 		}
 	}
 }
