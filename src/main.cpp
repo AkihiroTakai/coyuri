@@ -25,6 +25,7 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	kin_wcm,
 	kin_wcm,
 	kin_wcm,
+	kin_wcm,
 	ryu_wcm,
 	uma_wcm,
 	ou_wcm,
@@ -35,6 +36,7 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	en_kin_wcm,
 	en_hisha_wcm,
 	en_kaku_wcm,
+	en_kin_wcm,
 	en_kin_wcm,
 	en_kin_wcm,
 	en_kin_wcm,
@@ -73,7 +75,6 @@ int main(int argc, char **argv){
 	}
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 	init();
-	std::cout << fl_ask("なりますか？") << std::endl;
 
 	message = new Fl_Box(400, 800, 100, 100, "えへへ。よろしくお願いしますです。");
 	win.end();

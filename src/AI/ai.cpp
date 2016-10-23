@@ -73,6 +73,7 @@ Node *min(Node *node, int limit){
 void ai_turn(Node *root){
 
 	Node *node = max(root, 4);
+	
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
 			printf("%3d", node->get_banmen()->get_type(x, y));
