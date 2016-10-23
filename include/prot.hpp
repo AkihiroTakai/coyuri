@@ -35,6 +35,7 @@ void target_masu(Point p);
 void target_clear();
 void move(Point replace);
 int EVAL(Node *node);
+void PLAYER_EXPAND(Node *node);
 void EXPAND(Node *node);
 void ai_turn(Node *root);
 Node *max(Node *node, int limit);

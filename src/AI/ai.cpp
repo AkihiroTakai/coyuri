@@ -46,7 +46,7 @@ Node *min(Node *node, int limit){
 	int score = 0, score_max = 10000;
 	Node *te = NULL;
 	//可能な手を生成
-      EXPAND(node);
+      PLAYER_EXPAND(node);
 
 	for(Node * & banmen : *(node->get_children())){
 		score = max(banmen, limit-1)->get_evalue();
