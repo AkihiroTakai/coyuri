@@ -40,7 +40,7 @@ class Masu : public Fl_Box {
 	int handle(int event);
 
 public:
-	Masu(int x, int y, int width, int height);
+    	Masu(int x, int y, int width, int height);
 	int get_x(){return X;}
 	int get_y(){return Y;};
 };
@@ -59,11 +59,15 @@ class Node {
 	BANMEN banmen;
 	Node *parent;
 	std::vector<Node *> children;
+	int evalue;
 
 public:
+	~Node();
 	Node(BANMEN *ban, Node *pare);
 	BANMEN *get_banmen();
 	std::vector<Node *> *get_children();
+	int get_evalue();
+	void set_evalue(int value);
 
 };
 

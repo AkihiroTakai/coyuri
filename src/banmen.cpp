@@ -22,6 +22,14 @@ Point BANMEN::find_koma(KOMA_TYPE type){
 			if(banmen[x][y] == type) return Point(x, y);
 }
 
+Node::~Node(){
+	if(!children.empty()){
+		for(Node *child : children){
+			delete child;
+		}
+	}
+}
+
 Node::Node(BANMEN *ban, Node *pare){
 	banmen.copy_banmen(ban);
 	parent = pare;
@@ -33,4 +41,12 @@ BANMEN *Node::get_banmen(){
 
 std::vector<Node *> *Node::get_children(){
 	return &children;
+}
+
+int Node::get_evalue(){
+	return evalue;
+}
+
+void Node::set_evalue(int value){
+	evalue = value;
 }
