@@ -46,8 +46,10 @@ public:
 };
 
 class BANMEN {
-	KOMA_TYPE banmen[9][9];
+	KOMA_TYPE **banmen;
 public:
+	BANMEN();
+	~BANMEN();
 	KOMA_TYPE get_type(int x, int y);
 	void set_type(int x, int y, KOMA_TYPE type);
 	void copy_banmen(BANMEN *original);
@@ -56,7 +58,7 @@ public:
 
 class Node {
 
-	BANMEN banmen;
+	BANMEN *banmen;
 	Node *parent;
 	std::vector<Node *> children;
 	int evalue;

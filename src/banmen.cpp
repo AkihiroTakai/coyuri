@@ -1,5 +1,16 @@
 #include "../include/type.hpp"
-#include <stdio.h>
+#include <iostream>
+
+BANMEN::BANMEN(){
+	banmen = new KOMA_TYPE *[9];
+      for(int i = 0;i < 9;i++)
+		banmen[i] = new KOMA_TYPE[9];
+}
+
+BANMEN::~BANMEN(){
+	for(int i = 0;i < 9;i++)
+		delete[] banmen[i];
+}
 
 KOMA_TYPE BANMEN::get_type(int x, int y){
 	return banmen[x][y];
@@ -31,19 +42,18 @@ Point BANMEN::find_koma(KOMA_TYPE type){
 Node::~Node(){
 	if(!children.empty()){
 		for(Node *child : children){
-			delete child;
-			child->get_children()->clear();
+			delete child->get_banmen();
 		}
 	}
 }
 
 Node::Node(BANMEN *ban, Node *pare){
-	banmen.copy_banmen(ban);
+	banmen = ban;
 	parent = pare;
 }
 
 BANMEN *Node::get_banmen(){
-	return &banmen;
+	return banmen;
 }
 
 std::vector<Node *> *Node::get_children(){
@@ -56,4 +66,15 @@ int Node::get_evalue(){
 
 void Node::set_evalue(int value){
 	evalue = value;
+}
+
+void destroy_tree(Node *root){
+	for(Node *node : *root->get_children()){
+		if(node->get_children()->empty()){
+			std::cout << "delete\n";
+			delete node->get_banmen();
+		}else{
+			destroy_tree(node);
+		}
+	}
 }

@@ -21,12 +21,15 @@ int Masu::handle(int event){
 			 *AIのターン
 			 */
 			BANMEN *banmen = new BANMEN;
+
 			for(int x = 0;x < 9;x++)
 				for(int y = 0;y < 9;y++)
 					banmen->set_type(x, y, main_ban[x][y]);
+
 			Node *root = new Node(banmen, NULL);
+
 			ai_turn(root);
-			delete root;
+			destroy_tree(root);
 			return 0;
 		}
 		target_clear();

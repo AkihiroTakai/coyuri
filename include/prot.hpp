@@ -39,5 +39,6 @@ void EXPAND(Node *node);
 void ai_turn(Node *root);
 Node *max(Node *node, int limit);
 Node *min(Node *node, int limit);
+void destroy_tree(Node *root);
 
 #endif
