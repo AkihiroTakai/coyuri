@@ -12,7 +12,7 @@ Masu::Masu(int x, int y, int width, int height) : Fl_Box(x, y, width, height, 0)
 int Masu::handle(int event){
 	if(event == FL_RELEASE){
 		int x = (X/70) - 1, y = (Y/70) - 1;
-		if(main_ban[x][y] >= EN_HU && main_ban[x][y] <= EN_OU){
+		if(main_ban[x][y] >= EN_HU && main_ban[x][y] <= EN_OU && target_ban[x][y]->image() != images[TARGET]){
 			target_clear();
 			return -1;
 		}

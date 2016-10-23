@@ -71,7 +71,7 @@ void Node::set_evalue(int value){
 void destroy_tree(Node *root){
 	for(Node *node : *root->get_children()){
 		if(node == NULL) continue;
-		if(node->get_children()->size() > 0){
+		if(!node->get_children()->size() > 0){
 			delete node;
 		}else{
 			std::cout << "in\n";
@@ -80,4 +80,5 @@ void destroy_tree(Node *root){
 			delete node;
 		}
 	}
+
 }

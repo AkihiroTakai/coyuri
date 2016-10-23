@@ -77,8 +77,11 @@ void ai_turn(Node *root){
 	}
 
 	std::cout << "eval:" << node->get_evalue() << std::endl;
-	delete node;
-	node = NULL;
-	delete root;
-	root = NULL;
+	destroy_tree(root);
+/*
+  delete node;
+  node = NULL;
+  delete root;
+  root = NULL;
+*/
 }
