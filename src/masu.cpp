@@ -12,10 +12,14 @@ Masu::Masu(int x, int y, int width, int height) : Fl_Box(x, y, width, height, 0)
 int Masu::handle(int event){
 	if(event == FL_RELEASE){
 		int x = (X/70) - 1, y = (Y/70) - 1;
+		if(main_ban[x][y] >= EN_HU && main_ban[x][y] <= EN_OU){
+			target_clear();
+			return -1;
+		}
 		std::cout << "KOMA_TYPE" << main_ban[x][y] << std::endl;
 		if(target_ban[x][y]->image() == images[TARGET]){
 			move(Point(std::abs(x-9), y+1));
-			
+
 			/*
 			 *AIのターン
 			 */
