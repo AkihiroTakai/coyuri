@@ -76,7 +76,7 @@ int main(int argc, char **argv){
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 	init();
 
-	message = new Fl_Box(400, 800, 100, 100, "えへへ。よろしくお願いしますです。");
+	//message = new Fl_Box(400, 800, 100, 100, "えへへ。よろしくお願いしますです。");
 	win.end();
 	win.show(argc, argv);
 

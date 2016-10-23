@@ -6,7 +6,7 @@
 void move(Point replace){
 	std::cout << "move\n";
 	
-	if(replace.get_y() <= 3){
+	if(replace.get_y() <= 3 && !(main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()] >= TOKIN && main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()] <= UMA)){
 		if(fl_ask("成りますか？")){
 			/*
 			 *成る処理

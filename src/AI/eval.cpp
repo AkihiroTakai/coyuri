@@ -8,12 +8,17 @@ const int WITHIN_OU     = 5;
 const int WITHIN_HISHA  = 3;
 const int WITHIN_KAKU   = 2;
 const int WITHIN_PLAYER = -15;
+const int PLAYER_HISHA  = 30;
+const int PLAYER_KAKU   = 27;
 
 int within_ou(BANMEN *banmen);
 int within_hisha(BANMEN *banmen);
 int within_kaku(BANMEN *banmen);
 int within_player(BANMEN *banmen);
 int num_on_ban(BANMEN *banmen);
+int player_hisha(BANMEN *banmen);
+int player_kaku(BANMEN *banmen);
+
 /*
  *注
  *ここで言う"敵"とはプレイヤーのこと
@@ -50,6 +55,16 @@ int EVAL(Node *node){
 	 *自分の駒が盤面に何枚残っているか
 	 */
 	score += num_on_ban(node->get_banmen());
+
+	/*
+	 *盤面にプレイヤーの飛車(龍も含む)がいなければ評価値上昇
+	 */
+	score += player_hisha(node->get_banmen());
+
+	/*
+	 *盤面にプレイヤーの角(馬も含む)がいなければ評価値上昇
+	 */
+	score += player_kaku(node->get_banmen());
 
 	return score;
 }
@@ -102,6 +117,27 @@ int num_on_ban(BANMEN *banmen){
 
 	return count*2;
 }
+
+/*
+ *盤面上にプレイヤーの飛車(龍も含む)はいるか
+ */
+int player_hisha(BANMEN *banmen){
+	if(banmen->find_koma(HISHA).get_x() != -1 && banmen->find_koma(RYU).get_x() != -1)
+		return 0;
+	return PLAYER_HISHA;
+}
+
+
+/*
+ *盤面上にプレイヤーの角(馬も含む)はいるか
+ */
+int player_kaku(BANMEN *banmen){
+	if(banmen->find_koma(KAKU).get_x() != -1 && banmen->find_koma(UMA).get_x() != -1)
+		return 0;
+
+	return PLAYER_KAKU;
+}
+
 
 /*
  *渡された盤面からコンピュータがさせる手をすべてリストアップする関数

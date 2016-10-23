@@ -84,7 +84,6 @@ void ai_turn(Node *root){
 
 	std::cout << "eval:" << node->get_evalue() << std::endl;
 	if(node->get_evalue() > 20){
-		delete message;
-		message = new Fl_Box(400, 800, 100, 100, "ふむふむっ　　　　　　　　　　");
+		//message = new Fl_Box(400, 800, 100, 100, "ふむふむっ　　　　　　　　　　");
 	}
 }
