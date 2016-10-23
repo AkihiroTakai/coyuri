@@ -2,8 +2,10 @@
 #include "../../include/prot.hpp"
 #include "../../include/value.hpp"
 #include <iostream>
+#include <string>
 #include <cmath>
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
  *探索部分
@@ -69,7 +71,7 @@ Node *min(Node *node, int limit){
 
 
 void ai_turn(Node *root){
-	
+
 	Node *node = max(root, 4);
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
@@ -80,12 +82,8 @@ void ai_turn(Node *root){
 	}
 
 	std::cout << "eval:" << node->get_evalue() << std::endl;
-	
-	//destroy_tree(root);
-/*
-  delete node;
-  node = NULL;
-  delete root;
-  root = NULL;
-*/
+	if(node->get_evalue() > 20){
+		delete message;
+		message = new Fl_Box(400, 800, 100, 100, "ふむふむっ　　　　　　　　　　");
+	}
 }

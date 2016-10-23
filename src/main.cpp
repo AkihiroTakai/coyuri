@@ -1,5 +1,4 @@
-#include <FL/Fl_Input.H>
-#include <FL/Fl_Button.H>
+#include <FL/fl_ask.H>
 #include <iostream>
 #include "../include/type.hpp"
 #include "../include/prot.hpp"
@@ -8,9 +7,10 @@ const int IMAGE_SIDE = 70;
 Masu *visual_ban[9][9];
 Fl_Box *target_ban[9][9];
 KOMA_TYPE main_ban[9][9];
-Fl_PNG_Image *images[18];
+Fl_PNG_Image *images[30];
 Fl_PNG_Image *clear;
 Point TARGET_KOMA;
+Fl_Box *message;
 
 std::vector<Point> (*wcm_ftable[])(Point point) = {
 	null_wcm,
@@ -22,6 +22,11 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	kin_wcm,
 	hisha_wcm,
 	kaku_wcm,
+	kin_wcm,
+	kin_wcm,
+	kin_wcm,
+	ryu_wcm,
+	uma_wcm,
 	ou_wcm,
 	en_hu_wcm,
 	en_kyousha_wcm,
@@ -30,13 +35,18 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	en_kin_wcm,
 	en_hisha_wcm,
 	en_kaku_wcm,
+	en_kin_wcm,
+	en_kin_wcm,
+	en_kin_wcm,
+	en_ryu_wcm,
+	en_uma_wcm,
 	en_ou_wcm
 };
 
 int main(int argc, char **argv){
 
 	fl_register_images();
-	Fl_Window win(800, 900, "Coyuri");
+	Fl_Window win(800, 950, "Coyuri");
 
       for(int y = 1;y <= 9;y++){
 		for(int x = 1;x <= 9;x++){
@@ -63,7 +73,9 @@ int main(int argc, char **argv){
 	}
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 	init();
+	std::cout << fl_ask("なりますか？") << std::endl;
 
+	message = new Fl_Box(400, 800, 100, 100, "えへへ。よろしくお願いしますです。");
 	win.end();
 	win.show(argc, argv);
 

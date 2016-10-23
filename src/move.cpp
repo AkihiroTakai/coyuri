@@ -1,13 +1,17 @@
 #include "../include/value.hpp"
 #include "../include/prot.hpp"
 #include <iostream>
+#include <FL/fl_ask.H>
 
 void move(Point replace){
 	std::cout << "move\n";
-	/*
-	set_and_redraw(Point(replace.get_x(), replace.get_y()), main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()]);
-	set_and_redraw(Point(9-TARGET_KOMA.get_x(), TARGET_KOMA.get_y()+1), EMPTY);
-	*/
+	if(replace.get_y() <= 3){
+		if(fl_ask("成りますか？")){
+			/*
+			 *成る処理
+			 */
+		}
+	}
 	/*
 	 *このときはmain_banを更新するだけ
 	 */

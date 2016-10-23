@@ -202,8 +202,107 @@ std::vector<Point> ou_wcm(Point p){
 	return points;
 }
 
-std::vector<Point> target_move(Point p){
-	move(p);
+//龍のwcm関数
+std::vector<Point> ryu_wcm(Point p){
+	std::vector<Point> points;
+	int x = p.get_x()-1, y;
+
+	/*
+	 *左方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, p.get_y(), &points)){
+		x--;
+	}
+
+	/*
+	 *左方向の移動可能判定
+	 */
+	x = p.get_x()+1;
+      while(jands_one_wcm(x, p.get_y(), &points)){
+		x++;
+	}
+
+	/*
+	 *下方向の移動可能判定
+	 */
+	y = p.get_y()+1;
+      while(jands_one_wcm(p.get_x(), y, &points)){
+		y++;
+	}
+
+	/*
+	 *上方向の移動可能判定
+	 */
+	y = p.get_y()-1;
+	while(jands_one_wcm(p.get_x(), y, &points)){
+		y--;
+	}
+
+	//斜め上方向の移動可能判定
+	jands_one_wcm(p.get_x()-1, p.get_y()-1, &points);
+	jands_one_wcm(p.get_x()+1, p.get_y()-1, &points);
+
+	//斜め下方向の移動可能判定
+	jands_one_wcm(p.get_x()-1, p.get_y()+1, &points);
+	jands_one_wcm(p.get_x()+1, p.get_y()+1, &points);
+
+	return points;
+}
+
+//馬のwcm関数
+std::vector<Point> uma_wcm(Point p){
+	std::vector<Point> points;
+
+	int x = p.get_x()-1, y = p.get_y()-1;
+	/*
+	 *右上方向の移動可能判定
+	 */
+      while(jands_one_wcm(x, y, &points)){
+		x--;
+		y--;
+	}
+
+	x = p.get_x()+1;
+	y = p.get_y()-1;
+	/*
+	 *左上方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x++;
+		y--;
+	}
+
+      x = p.get_x()-1;
+	y = p.get_y()+1;
+	/*
+	 *右下方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x--;
+		y++;
+	}
+
+	x = p.get_x()+1;
+	y = p.get_y()+1;
+	/*
+	 *右下方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x++;
+		y++;
+	}
+
+	//横方向の移動可能判定
+	jands_one_wcm(p.get_x()+1, p.get_y(), &points);
+	jands_one_wcm(p.get_x()-1, p.get_y(), &points);
+
+	//前方の移動可能判定
+	jands_one_wcm(p.get_x(), p.get_y()-1, &points);
+
+	//後方方向の移動可能判定
+	jands_one_wcm(p.get_x(), p.get_y()+1, &points);
+
+	return points;
 }
 
 
@@ -331,7 +430,7 @@ std::vector<Point> en_hisha_wcm(Point p){
 	return points;
 }
 
-//角のwcm関数
+//敵の角のwcm関数
 std::vector<Point> en_kaku_wcm(Point p){
 	std::vector<Point> points;
 
@@ -377,7 +476,7 @@ std::vector<Point> en_kaku_wcm(Point p){
 	return points;
 }
 
-//王将のwcm関数
+//敵の王将のwcm関数
 std::vector<Point> en_ou_wcm(Point p){
 	std::vector<Point> points;
 
@@ -394,6 +493,110 @@ std::vector<Point> en_ou_wcm(Point p){
 	ai_jands_one_wcm(p.get_x(), p.get_y()+1, &points);
 	ai_jands_one_wcm(p.get_x()-1, p.get_y()+1, &points);
 	ai_jands_one_wcm(p.get_x()+1, p.get_y()+1, &points);
+
+	return points;
+}
+
+
+//龍のwcm関数
+std::vector<Point> en_ryu_wcm(Point p){
+	std::vector<Point> points;
+	int x = p.get_x()-1, y;
+
+	/*
+	 *左方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, p.get_y(), &points)){
+		x--;
+	}
+
+	/*
+	 *左方向の移動可能判定
+	 */
+	x = p.get_x()+1;
+      while(jands_one_wcm(x, p.get_y(), &points)){
+		x++;
+	}
+
+	/*
+	 *下方向の移動可能判定
+	 */
+	y = p.get_y()+1;
+      while(jands_one_wcm(p.get_x(), y, &points)){
+		y++;
+	}
+
+	/*
+	 *上方向の移動可能判定
+	 */
+	y = p.get_y()-1;
+	while(jands_one_wcm(p.get_x(), y, &points)){
+		y--;
+	}
+
+	//斜め上方向の移動可能判定
+	jands_one_wcm(p.get_x()-1, p.get_y()-1, &points);
+	jands_one_wcm(p.get_x()+1, p.get_y()-1, &points);
+
+	//斜め下方向の移動可能判定
+	jands_one_wcm(p.get_x()-1, p.get_y()+1, &points);
+	jands_one_wcm(p.get_x()+1, p.get_y()+1, &points);
+
+	return points;
+}
+
+//馬のwcm関数
+std::vector<Point> en_uma_wcm(Point p){
+	std::vector<Point> points;
+
+	int x = p.get_x()-1, y = p.get_y()-1;
+	/*
+	 *右上方向の移動可能判定
+	 */
+      while(jands_one_wcm(x, y, &points)){
+		x--;
+		y--;
+	}
+
+	x = p.get_x()+1;
+	y = p.get_y()-1;
+	/*
+	 *左上方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x++;
+		y--;
+	}
+
+      x = p.get_x()-1;
+	y = p.get_y()+1;
+	/*
+	 *右下方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x--;
+		y++;
+	}
+
+	x = p.get_x()+1;
+	y = p.get_y()+1;
+	/*
+	 *右下方向の移動可能判定
+	 */
+	while(jands_one_wcm(x, y, &points)){
+		x++;
+		y++;
+	}
+
+	//横方向の移動可能判定
+	jands_one_wcm(p.get_x()+1, p.get_y(), &points);
+	jands_one_wcm(p.get_x()-1, p.get_y(), &points);
+
+	//前方の移動可能判定
+	jands_one_wcm(p.get_x(), p.get_y()-1, &points);
+
+	//後方方向の移動可能判定
+	jands_one_wcm(p.get_x(), p.get_y()+1, &points);
 
 	return points;
 }

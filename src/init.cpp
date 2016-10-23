@@ -12,26 +12,38 @@ void images_path_init(){
 	/*
 	 *味方
 	 */
-	images[HU]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/hu.png");
-	images[KYOUSHA] = new Fl_PNG_Image("/home/takai/Pictures/coyuri/kyousha.png");
-	images[KEIMA]   = new Fl_PNG_Image("/home/takai/Pictures/coyuri/keima.png");
-      images[GIN]     = new Fl_PNG_Image("/home/takai/Pictures/coyuri/gin.png");
-	images[KIN]     = new Fl_PNG_Image("/home/takai/Pictures/coyuri/kin.png");
-	images[HISHA]   = new Fl_PNG_Image("/home/takai/Pictures/coyuri/hisha.png");
-	images[KAKU]    = new Fl_PNG_Image("/home/takai/Pictures/coyuri/kaku.png");
-	images[OU]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/ou.png");
+	images[HU]       = new Fl_PNG_Image("/home/takai/Pictures/coyuri/hu.png");
+	images[KYOUSHA]  = new Fl_PNG_Image("/home/takai/Pictures/coyuri/kyousha.png");
+	images[KEIMA]    = new Fl_PNG_Image("/home/takai/Pictures/coyuri/keima.png");
+      images[GIN]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/gin.png");
+	images[KIN]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/kin.png");
+	images[HISHA]    = new Fl_PNG_Image("/home/takai/Pictures/coyuri/hisha.png");
+	images[KAKU]     = new Fl_PNG_Image("/home/takai/Pictures/coyuri/kaku.png");
+	images[TOKIN]    = new Fl_PNG_Image("/home/takai/Pictures/coyuri/tokin.png");
+	images[NARIKYOU] = new Fl_PNG_Image("/home/takai/Pictures/coyuri/narikyou.png");
+	images[NARIKEI]  = new Fl_PNG_Image("/home/takai/Pictures/coyuri/narikei.png");
+	images[NARIGIN]  = new Fl_PNG_Image("/home/takai/Pictures/coyuri/narigin.png");
+      images[RYU]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/ryu.png");
+	images[UMA]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/uma.png");
+	images[OU]       = new Fl_PNG_Image("/home/takai/Pictures/coyuri/ou.png");
 
 	/*
 	 *敵側
 	 */
-	images[EN_HU]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_hu.png");
-	images[EN_KYOUSHA] = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_kyousha.png");
-	images[EN_KEIMA]   = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_keima.png");
-	images[EN_GIN]     = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_gin.png");
-	images[EN_KIN]     = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_kin.png");
-	images[EN_HISHA]   = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_hisha.png");
-	images[EN_KAKU]    = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_kaku.png");
-	images[EN_OU]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_ou.png");
+	images[EN_HU]       = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_hu.png");
+	images[EN_KYOUSHA]  = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_kyousha.png");
+	images[EN_KEIMA]    = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_keima.png");
+	images[EN_GIN]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_gin.png");
+	images[EN_KIN]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_kin.png");
+	images[EN_HISHA]    = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_hisha.png");
+	images[EN_KAKU]     = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_kaku.png");
+	images[EN_TOKIN]    = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_tokin.png");
+	images[EN_NARIKYOU] = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_narikyou.png");
+	images[EN_NARIKEI]  = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_narikei.png");
+	images[EN_NARIGIN]  = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_narigin.png");
+	images[EN_RYU]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_ryu.png");
+	images[EN_UMA]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_uma.png");
+	images[EN_OU]       = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_ou.png");
 }
 
 /*

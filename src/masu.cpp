@@ -30,10 +30,8 @@ int Masu::handle(int event){
 					banmen->set_type(x, y, main_ban[x][y]);
 
 			Node *root = new Node(banmen, NULL);
-			
 			ai_turn(root);
-			
-			//destroy_tree(root);
+
 			target_clear();
 			return 0;
 		}
