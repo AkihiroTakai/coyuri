@@ -48,5 +48,5 @@ int min(Node *node, int limit){
 
 void ai_turn(BANMEN *banmen){
 	Node *root = new Node(banmen, NULL);
-	std::cout << max(root, 2) << std::endl;
+	std::cout << max(root, 4) << std::endl;
 }

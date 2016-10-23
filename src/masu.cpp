@@ -16,6 +16,7 @@ int Masu::handle(int event){
 		if(target_ban[x][y]->image() == images[TARGET]){
 			std::cout << "MOVE_IF_IN\n";
 			move(Point(std::abs(x-9), y+1));
+			target_clear();
 			/*
 			 *AIのターン
 			 */
@@ -24,7 +25,7 @@ int Masu::handle(int event){
 				for(int y = 0;y < 9;y++)
 					banmen->set_type(x, y, main_ban[x][y]);
 			ai_turn(banmen);
-			target_clear();
+			delete banmen;
 			return 0;
 		}
 		target_clear();
