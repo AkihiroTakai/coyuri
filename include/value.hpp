@@ -13,5 +13,7 @@ extern Point TARGET_KOMA;
 extern Fl_Box *target_ban[9][9];
 extern Masu *visual_ban[9][9];
 extern Fl_Box *message;
+extern std::vector<KOMA_TYPE> AI_TEGOMA;
+extern std::vector<KOMA_TYPE> PLAYER_TEGOMA;
 
 #endif
