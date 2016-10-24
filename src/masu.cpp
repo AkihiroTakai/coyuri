@@ -23,6 +23,7 @@ int Masu::handle(int event){
 			/*
 			 *AIのターン
 			 */
+			/*
 			BANMEN *banmen = new BANMEN;
 
 			for(int x = 0;x < 9;x++)
@@ -31,8 +32,9 @@ int Masu::handle(int event){
 
 			Node *root = new Node(banmen, NULL);
 			ai_turn(root);
-
+			*/
 			target_clear();
+			show_tegoma();
 			return 0;
 		}
 		target_clear();

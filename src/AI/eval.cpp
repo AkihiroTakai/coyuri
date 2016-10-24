@@ -11,6 +11,22 @@ const int WITHIN_PLAYER = -15;
 const int PLAYER_HISHA  = 30;
 const int PLAYER_KAKU   = 27;
 
+const int HU_EVAL = 10;
+const int KYOUSHA_EVAL = 15;
+const int KEIMA_EVAL = 15;
+const int GIN_EVAL = 30;
+const int KIN_EVAL = 50;
+const int HISHA_EVAL = 100;
+const int KAKU_EVAL = 95;
+const int OU_EVAL = 1000;
+const int TOKIN_EVAL = 55;
+const int NARIKYOU_EVAL = 55;
+const int NARIKEI_EVAL = 55;
+const int NARIGIN_EVAL = 55;
+const int RYU_EVAL = 150;
+const int UMA_EVAL = 140;
+
+
 int within_ou(BANMEN *banmen);
 int within_hisha(BANMEN *banmen);
 int within_kaku(BANMEN *banmen);
@@ -27,6 +43,7 @@ int player_kaku(BANMEN *banmen);
 
 int EVAL(Node *node){
 	int score = 0;
+	int counters[30] = {0};
       /*
 	 *盤面を評価
 	 */
@@ -56,15 +73,40 @@ int EVAL(Node *node){
 	 */
 	score += num_on_ban(node->get_banmen());
 
-	/*
-	 *盤面にプレイヤーの飛車(龍も含む)がいなければ評価値上昇
-	 */
-	score += player_hisha(node->get_banmen());
+	for(int y = 0;y < 9;y++){
+		for(int x = 0;x < 9;x++){
+			counters[main_ban[x][y]]++;
+		}
+	}
 
-	/*
-	 *盤面にプレイヤーの角(馬も含む)がいなければ評価値上昇
-	 */
-	score += player_kaku(node->get_banmen());
+	score -= counters[2]*HU_EVAL;
+	score -= counters[3]*KYOUSHA_EVAL;
+	score -= counters[4]*KEIMA_EVAL;
+	score -= counters[5]*GIN_EVAL;
+	score -= counters[6]*KIN_EVAL;
+	score -= counters[7]*HISHA_EVAL;
+	score -= counters[8]*KAKU_EVAL;
+	score -= counters[9]*TOKIN_EVAL;
+	score -= counters[10]*NARIKYOU_EVAL;
+	score -= counters[11]*NARIKEI_EVAL;
+	score -= counters[12]*NARIGIN_EVAL;
+	score -= counters[13]*RYU_EVAL;
+	score -= counters[14]*UMA_EVAL;
+	score -= counters[15]*OU_EVAL;
+	score += counters[16]*HU_EVAL;
+	score += counters[17]*KYOUSHA_EVAL;
+	score += counters[18]*KEIMA_EVAL;
+	score += counters[19]*GIN_EVAL;
+	score += counters[20]*KIN_EVAL;
+	score += counters[21]*HISHA_EVAL;
+	score += counters[22]*KAKU_EVAL;
+	score += counters[23]*TOKIN_EVAL;
+	score += counters[24]*NARIKYOU_EVAL;
+	score += counters[25]*NARIKEI_EVAL;
+	score += counters[26]*NARIGIN_EVAL;
+	score += counters[27]*RYU_EVAL;
+	score += counters[28]*UMA_EVAL;
+	score += counters[29]*OU_EVAL;
 
 	return score;
 }

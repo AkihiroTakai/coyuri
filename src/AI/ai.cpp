@@ -18,7 +18,7 @@ Node *max(Node *node, int limit){
 		return node;
 	}
 
-	int score = 0, score_max = -1;
+	int score = 0, score_max = -10000;
 	Node *te = NULL;
 	//可能な手を生成
       EXPAND(node);
@@ -73,7 +73,6 @@ Node *min(Node *node, int limit){
 void ai_turn(Node *root){
 
 	Node *node = max(root, 4);
-	
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
 			printf("%3d", node->get_banmen()->get_type(x, y));
@@ -86,4 +85,18 @@ void ai_turn(Node *root){
 	if(node->get_evalue() > 20){
 		//message = new Fl_Box(400, 800, 100, 100, "ふむふむっ　　　　　　　　　　");
 	}
+}
+
+void AI_START(Fl_Widget* widget){
+	/*
+	 *AIのターン
+	 */
+	BANMEN *banmen = new BANMEN;
+
+	for(int x = 0;x < 9;x++)
+		for(int y = 0;y < 9;y++)
+			banmen->set_type(x, y, main_ban[x][y]);
+
+	Node *root = new Node(banmen, NULL);
+	ai_turn(root);
 }

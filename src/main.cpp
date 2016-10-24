@@ -1,4 +1,5 @@
 #include <FL/fl_ask.H>
+#include <FL/Fl_Button.H>
 #include <iostream>
 #include "../include/type.hpp"
 #include "../include/prot.hpp"
@@ -48,7 +49,7 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 int main(int argc, char **argv){
 
 	fl_register_images();
-	Fl_Window win(800, 950, "Coyuri");
+	Fl_Window win(1200, 1000, "Coyuri");
 
       for(int y = 1;y <= 9;y++){
 		for(int x = 1;x <= 9;x++){
@@ -75,6 +76,9 @@ int main(int argc, char **argv){
 	}
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 	init();
+	Fl_Button *next = new Fl_Button(600, 750, 50, 50, "next");
+	next->callback(AI_START);
+
 
 	//message = new Fl_Box(400, 800, 100, 100, "えへへ。よろしくお願いしますです。");
 	win.end();

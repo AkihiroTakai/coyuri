@@ -49,5 +49,7 @@ Node *min(Node *node, int limit);
 void destroy_tree(Node *root);
 void player_push_koma(KOMA_TYPE type);
 void ai_push_koma(KOMA_TYPE type);
+void show_tegoma();
+void AI_START(Fl_Widget* widget);
 
 #endif

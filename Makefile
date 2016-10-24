@@ -8,7 +8,7 @@ AI=$(SRC)/AI
 CFLAGS=`fltk-config --cxxflags`
 LDFLAGS=`fltk-config --ldflags --use-images`
 OBJS = $(DST)/point.o $(DST)/main.o $(DST)/init.o $(DST)/koma.o $(DST)/wcm.o $(DST)/masu.o $(DST)/move.o $(DST)/draw.o \
- $(DST)/banmen.o
+ $(DST)/banmen.o $(DST)/tegoma.o
 
 coyuri: $(OBJS)
 	cd $(AI) && make all
