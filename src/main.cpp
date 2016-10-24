@@ -12,6 +12,9 @@ Fl_PNG_Image *images[30];
 Fl_PNG_Image *clear;
 Point TARGET_KOMA;
 Fl_Box *message;
+Tegoma *player_tegomas[38];
+Tegoma *ai_tegomas[38];
+KOMA_TYPE UTSU;
 
 std::vector<Point> (*wcm_ftable[])(Point point) = {
 	null_wcm,
@@ -43,13 +46,16 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	en_kin_wcm,
 	en_ryu_wcm,
 	en_uma_wcm,
-	en_ou_wcm
+	en_ou_wcm,
+	tegoma_wcm
 };
 
 int main(int argc, char **argv){
 
 	fl_register_images();
 	Fl_Window win(1200, 1000, "Coyuri");
+
+	UTSU = EMPTY;
 
       for(int y = 1;y <= 9;y++){
 		for(int x = 1;x <= 9;x++){
@@ -58,6 +64,7 @@ int main(int argc, char **argv){
 			 */
 			Masu *fl_box = new Masu(x*IMAGE_SIDE, y*IMAGE_SIDE, IMAGE_SIDE, IMAGE_SIDE);
 			Masu *targ_box = new Masu(x*IMAGE_SIDE, y*IMAGE_SIDE, IMAGE_SIDE, IMAGE_SIDE);
+
                   /*
 			 *画像は最初何も入れない
 			 */
@@ -74,11 +81,19 @@ int main(int argc, char **argv){
 			target_ban[x-1][y-1] = targ_box;
 		}
 	}
+	for(int i = 0;i < 38;i++){
+		player_tegomas[i] = new Tegoma(70*((i%6)+1)+700, 70*((i%6)+1), 70, 70, i, EMPTY);
+		player_tegomas[i]->image(images[EMPTY]);
+	}
+
+	for(int i = 0;i < 38;i++){
+		ai_tegomas[i] = new Tegoma(70*((i%6)+1)+700, 70*((i%6)+1)+500, 70, 70, i, EMPTY);
+		ai_tegomas[i]->image(images[EMPTY]);
+	}
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 	init();
 	Fl_Button *next = new Fl_Button(600, 750, 50, 50, "next");
 	next->callback(AI_START);
-
 
 	//message = new Fl_Box(400, 800, 100, 100, "えへへ。よろしくお願いしますです。");
 	win.end();

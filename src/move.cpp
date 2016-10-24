@@ -15,14 +15,13 @@ void move(Point replace){
 			if(main_ban[9-replace.get_x()][replace.get_y()-1] != EMPTY){
 				//手駒を取れたら
 				PLAYER_TEGOMA.push_back(main_ban[9-replace.get_x()][replace.get_y()-1]);
+				player_tegomas[PLAYER_TEGOMA.size()-1]->set_type(main_ban[9-replace.get_x()][replace.get_y()-1]);
+
 			}
 
 			set_and_redraw(Point(replace.get_x(), replace.get_y()),(KOMA_TYPE)(main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()]+6));
 			set_and_redraw(Point(9-TARGET_KOMA.get_x(), TARGET_KOMA.get_y()+1), EMPTY);
-/*
-			main_ban[9-replace.get_x()][replace.get_y()-1] = (KOMA_TYPE)(main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()]+6);
-			main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()] = EMPTY;
-*/
+
 			return;
 		}
 	}
@@ -40,8 +39,5 @@ void move(Point replace){
 	}
 	set_and_redraw(Point(replace.get_x(), replace.get_y()), main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()]);
 	set_and_redraw(Point(9-TARGET_KOMA.get_x(), TARGET_KOMA.get_y()+1), EMPTY);
-/*
-	main_ban[9-replace.get_x()][replace.get_y()-1] = main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()];
-	main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()] = EMPTY;
-*/
+
 }

@@ -1,6 +1,7 @@
 #include "../include/prot.hpp"
 #include "../include/value.hpp"
 #include <iostream>
+#include <cmath>
 
 /*
  *wcm関数内では通常の将棋の盤面を操作する感じで行う
@@ -598,5 +599,15 @@ std::vector<Point> en_uma_wcm(Point p){
 	//後方方向の移動可能判定
 	jands_one_wcm(p.get_x(), p.get_y()+1, &points);
 
+	return points;
+}
+
+//手駒のwcm関数
+std::vector<Point> tegoma_wcm(Point p){
+	std::vector<Point> points;
+	for(int y = 0;y < 9;y++)
+		for(int x = 0;x < 9;x++)
+			if(main_ban[x][y] == EMPTY)
+				points.push_back(Point(std::abs(x-9), y+1));
 	return points;
 }

@@ -37,6 +37,7 @@ std::vector<Point> en_kaku_wcm(Point p);
 std::vector<Point> en_ou_wcm(Point p);
 std::vector<Point> en_ryu_wcm(Point p);
 std::vector<Point> en_uma_wcm(Point p);
+std::vector<Point> tegoma_wcm(Point p);
 void target_masu(Point p);
 void target_clear();
 void move(Point replace);
@@ -51,5 +52,6 @@ void player_push_koma(KOMA_TYPE type);
 void ai_push_koma(KOMA_TYPE type);
 void show_tegoma();
 void AI_START(Fl_Widget* widget);
+void PLAYER_UTSU(KOMA_TYPE type, Point p);
 
 #endif

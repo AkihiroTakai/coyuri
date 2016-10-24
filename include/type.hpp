@@ -12,7 +12,8 @@
 enum KOMA_TYPE {
 	EMPTY, TARGET,
 	HU, KYOUSHA, KEIMA, GIN, KIN, HISHA, KAKU, TOKIN, NARIKYOU, NARIKEI, NARIGIN, RYU, UMA, OU,
-	EN_HU, EN_KYOUSHA, EN_KEIMA, EN_GIN, EN_KIN, EN_HISHA, EN_KAKU, EN_TOKIN, EN_NARIKYOU, EN_NARIKEI, EN_NARIGIN, EN_RYU, EN_UMA,  EN_OU
+	EN_HU, EN_KYOUSHA, EN_KEIMA, EN_GIN, EN_KIN, EN_HISHA, EN_KAKU, EN_TOKIN, EN_NARIKYOU, EN_NARIKEI, EN_NARIGIN, EN_RYU, EN_UMA,  EN_OU,
+	TEGOMA
 };
 
 class Point {
@@ -43,6 +44,17 @@ public:
     	Masu(int x, int y, int width, int height);
 	int get_x(){return X;}
 	int get_y(){return Y;};
+};
+
+class Tegoma : public Fl_Box {
+	int index;
+	KOMA_TYPE type;
+	int handle(int event);
+
+public:
+    	Tegoma(int x, int y, int width, int height, int arg_index, KOMA_TYPE type);
+	int get_index(){return index;}
+	void set_type(KOMA_TYPE arg_type);
 };
 
 class BANMEN {

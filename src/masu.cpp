@@ -18,23 +18,16 @@ int Masu::handle(int event){
 		}
 		std::cout << "KOMA_TYPE" << main_ban[x][y] << std::endl;
 		if(target_ban[x][y]->image() == images[TARGET]){
-			move(Point(std::abs(x-9), y+1));
-
-			/*
-			 *AIのターン
-			 */
-			/*
-			BANMEN *banmen = new BANMEN;
-
-			for(int x = 0;x < 9;x++)
-				for(int y = 0;y < 9;y++)
-					banmen->set_type(x, y, main_ban[x][y]);
-
-			Node *root = new Node(banmen, NULL);
-			ai_turn(root);
-			*/
-			target_clear();
-			show_tegoma();
+			std::cout << UTSU << "UST\n";
+			if(UTSU != EMPTY){
+				std::cout << "UTSUUUUUUUUUUUUUUU\n";
+				PLAYER_UTSU(UTSU, Point(x, y));
+				UTSU = EMPTY;
+			}else{
+				move(Point(std::abs(x-9), y+1));
+				target_clear();
+				show_tegoma();
+			}
 			return 0;
 		}
 		target_clear();
