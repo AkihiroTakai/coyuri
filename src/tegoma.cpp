@@ -20,8 +20,12 @@ Tegoma::Tegoma(int x, int y, int width, int height, int in_x, int in_y, KOMA_TYP
 int Tegoma::handle(int event){
 	if(event == FL_RELEASE){
 		std::cout << "TEGOMA_EVENT!!!!\n";
-		for(Point point : wcm_ftable[TEGOMA](Point(0, 0))){
-			target_masu(point);
+		if(type == HU){
+
+		}else{
+			for(Point point : wcm_ftable[TEGOMA](Point(0, 0))){
+				target_masu(point);
+			}
 		}
 		UTSU = type;
 		UTSU_KOMA.set_x(9-X);
@@ -65,7 +69,11 @@ void show_tegoma(){
 }
 
 void Tegoma::set_type(KOMA_TYPE arg_type){
-	type = arg_type;
+	if(arg_type >= EN_HU && arg_type <= EN_OU){
+		type = negaeri(arg_type);
+	}else{
+		type = arg_type;
+	}
 }
 
 void PLAYER_UTSU(KOMA_TYPE type, Point p){

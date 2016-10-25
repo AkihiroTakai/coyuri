@@ -611,3 +611,7 @@ std::vector<Point> tegoma_wcm(Point p){
 				points.push_back(Point(std::abs(x-9), y+1));
 	return points;
 }
+
+std::vector<Point> ai_tegoma_wcm(){
+	
+}
