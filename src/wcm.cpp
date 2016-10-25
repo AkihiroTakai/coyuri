@@ -643,3 +643,32 @@ std::vector<Point> nihu_wcm(){
 	return points;
 }
 
+//打つときに、二歩にならないためのwcm関数(ai用)
+std::vector<Point> ai_nihu_wcm(){
+	std::vector<Point> points;
+	bool nihu = false;
+
+	for(int x = 0;x < 9;x++){
+		for(int y = 0;y < 9;y++){
+			if(main_ban[x][y] == EN_HU){
+				/*
+				 *歩があった
+				 */
+				nihu = true;
+			}
+		}
+		if(!nihu){
+			/*
+			 *歩が見つからない場合、その一行を追加
+			 */
+			for(int y = 0;y < 9;y++){
+				if(main_ban[x][y] == EMPTY){
+					points.push_back(Point(std::abs(x-9), y+1));
+				}
+			}
+		}
+		nihu = false;
+	}
+
+	return points;
+}

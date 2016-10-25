@@ -57,5 +57,6 @@ KOMA_TYPE naru(KOMA_TYPE type);
 KOMA_TYPE negaeri(KOMA_TYPE type);
 KOMA_TYPE ai_negaeri(KOMA_TYPE type);
 std::vector<Point> nihu_wcm();
+std::vector<Point> ai_nihu_wcm();
 
 #endif
