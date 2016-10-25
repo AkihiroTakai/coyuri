@@ -213,10 +213,17 @@ void EXPAND(Node *node){
 			}
 		}else{
 			for(Point p : tegoma_wcm(Point(-1, -1))){
-				BANMEN *new_banmen = new BANMEN;
-				new_banmen->copy_banmen(node->get_banmen());
-				new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
-				node->get_children()->push_back(new Node(new_banmen, node));
+				if(p.get_y() >= 7){
+					BANMEN *new_banmen = new BANMEN;
+					new_banmen->copy_banmen(node->get_banmen());
+					new_banmen->set_type(9-p.get_x(), p.get_y()-1, naru(koma));
+					node->get_children()->push_back(new Node(new_banmen, node));
+				}else{
+					BANMEN *new_banmen = new BANMEN;
+					new_banmen->copy_banmen(node->get_banmen());
+					new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
+					node->get_children()->push_back(new Node(new_banmen, node));
+				}
 			}
 		}
 	}
@@ -254,10 +261,17 @@ void PLAYER_EXPAND(Node *node){
 			}
 		}else{
 			for(Point p : tegoma_wcm(Point(-1, -1))){
-				BANMEN *new_banmen = new BANMEN;
-				new_banmen->copy_banmen(node->get_banmen());
-				new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
-				node->get_children()->push_back(new Node(new_banmen, node));
+				if(p.get_y() <= 3){
+					BANMEN *new_banmen = new BANMEN;
+					new_banmen->copy_banmen(node->get_banmen());
+					new_banmen->set_type(9-p.get_x(), p.get_y()-1, naru(koma));
+					node->get_children()->push_back(new Node(new_banmen, node));
+				}else{
+					BANMEN *new_banmen = new BANMEN;
+					new_banmen->copy_banmen(node->get_banmen());
+					new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
+					node->get_children()->push_back(new Node(new_banmen, node));
+				}
 			}
 		}
 	}
