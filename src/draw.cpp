@@ -24,4 +24,5 @@ void target_clear(){
 			}
 		}
 	}
+	UTSU = EMPTY;
 }

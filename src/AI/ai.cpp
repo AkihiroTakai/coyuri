@@ -93,7 +93,6 @@ Node *min(Node *node, int alpha, int beta, int limit){
 			beta = score;
 		}else{
 			delete (*node->get_children()).at(i);
-			(*node->get_children()).at(i) = NULL;
 		}
 	}
 
