@@ -11,23 +11,25 @@ std::vector<KOMA_TYPE> PLAYER_TEGOMA;
 
 void PLAYER_UTSU(KOMA_TYPE type, Point p);
 
-Tegoma::Tegoma(int x, int y, int width, int height, int arg_index, KOMA_TYPE arg_type) : Fl_Box(x, y, width, height, 0){
+Tegoma::Tegoma(int x, int y, int width, int height, int in_x, int in_y, KOMA_TYPE arg_type) : Fl_Box(x, y, width, height, 0){
+	X = in_x;
+	Y = in_y;
 	type = arg_type;
-	index = arg_index;
 }
 
 int Tegoma::handle(int event){
 	if(event == FL_RELEASE){
-		std::cout << "EVENT!!!!\n";
+		std::cout << "TEGOMA_EVENT!!!!\n";
 		for(Point point : wcm_ftable[TEGOMA](Point(0, 0))){
 			target_masu(point);
 		}
 		UTSU = type;
+		UTSU_KOMA.set_x(9-X);
+		UTSU_KOMA.set_y(Y+1);
 	}
 
 	return 1;
 }
-
 
 
 void player_push_koma(KOMA_TYPE type){
@@ -40,12 +42,18 @@ void ai_push_koma(KOMA_TYPE type){
 
 void show_tegoma(){
 	std::cout << "Player:";
-	int i = 0;
+	int x = 0, y = 0;
 	for(KOMA_TYPE koma : PLAYER_TEGOMA){
-
-		player_tegomas[i]->image(images[koma]);
-		player_tegomas[i]->redraw();
-		std::cout << "aaaaaaaaaaaaaaa\n";
+		player_tegomas[x][y]->image(images[koma]);
+		player_tegomas[x][y]->redraw();
+		x++;
+		if(x == 9){
+			/*
+			 *いい感じに循環させます
+			 */
+			x = 0;
+			y++;
+		}
 		std::cout << koma << " ";
 	}
 
@@ -61,15 +69,11 @@ void Tegoma::set_type(KOMA_TYPE arg_type){
 }
 
 void PLAYER_UTSU(KOMA_TYPE type, Point p){
-	std::vector<KOMA_TYPE>::iterator result = std::find(PLAYER_TEGOMA.begin(), PLAYER_TEGOMA.end(), type);
-	if(result != PLAYER_TEGOMA.end()){
-		/*
-		 *あった
-		 */
-		PLAYER_TEGOMA.erase(result);
-		set_and_redraw(p, type);
-	}
-	/*
-	 *ない
-	 */
+
+	set_and_redraw(p, type);
+	player_tegomas[(PLAYER_TEGOMA.size()-1) % 6][(PLAYER_TEGOMA.size()-1) / 6]->image(images[EMPTY]);
+	player_tegomas[(PLAYER_TEGOMA.size()-1) % 6][(PLAYER_TEGOMA.size()-1) / 6]->redraw();
+
+	PLAYER_TEGOMA.erase(std::find(PLAYER_TEGOMA.begin(), PLAYER_TEGOMA.end(), type));
+
 }

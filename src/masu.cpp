@@ -20,9 +20,11 @@ int Masu::handle(int event){
 		if(target_ban[x][y]->image() == images[TARGET]){
 			std::cout << UTSU << "UST\n";
 			if(UTSU != EMPTY){
-				std::cout << "UTSUUUUUUUUUUUUUUU\n";
-				PLAYER_UTSU(UTSU, Point(x, y));
+				std::cout << "UTS in\n";
+				PLAYER_UTSU(UTSU, Point(9-x, y+1));
+
 				UTSU = EMPTY;
+				target_clear();
 			}else{
 				move(Point(std::abs(x-9), y+1));
 				target_clear();
@@ -37,7 +39,6 @@ int Masu::handle(int event){
 		for(Point point : wcm_ftable[main_ban[x][y]](Point(std::abs(x-9), y+1))){
 			target_masu(point);
 		}
-
 	}
 
 	return 1;

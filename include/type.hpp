@@ -47,13 +47,14 @@ public:
 };
 
 class Tegoma : public Fl_Box {
-	int index;
+	int X, Y;
 	KOMA_TYPE type;
 	int handle(int event);
 
 public:
-    	Tegoma(int x, int y, int width, int height, int arg_index, KOMA_TYPE type);
-	int get_index(){return index;}
+    	Tegoma(int x, int y, int width, int height, int in_x, int in_y, KOMA_TYPE type);
+	int get_x(){return X;}
+	int get_y(){return Y;};
 	void set_type(KOMA_TYPE arg_type);
 };
 

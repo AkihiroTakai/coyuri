@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../include/type.hpp"
 #include "../include/prot.hpp"
+#include <utility>
 
 const int IMAGE_SIDE = 70;
 Masu *visual_ban[9][9];
@@ -12,9 +13,10 @@ Fl_PNG_Image *images[30];
 Fl_PNG_Image *clear;
 Point TARGET_KOMA;
 Fl_Box *message;
-Tegoma *player_tegomas[38];
-Tegoma *ai_tegomas[38];
+Tegoma *player_tegomas[6][6];
+Tegoma *ai_tegomas[6][6];
 KOMA_TYPE UTSU;
+Point UTSU_KOMA;
 
 std::vector<Point> (*wcm_ftable[])(Point point) = {
 	null_wcm,
@@ -81,15 +83,19 @@ int main(int argc, char **argv){
 			target_ban[x-1][y-1] = targ_box;
 		}
 	}
-	for(int i = 0;i < 38;i++){
-		player_tegomas[i] = new Tegoma(70*((i%6)+1)+700, 70*((i%6)+1), 70, 70, i, EMPTY);
-		player_tegomas[i]->image(images[EMPTY]);
+	for(int y = 0;y < 6;y++){
+		for(int x = 0;x < 6;x++){
+			player_tegomas[x][y] = new Tegoma(70*x+700, 70*y, 70, 70, x, y, EMPTY);
+			player_tegomas[x][y]->image(images[EMPTY]);
+		}
+	}
+	for(int y = 0;y < 6;y++){
+		for(int x = 0;x < 6;x++){
+			ai_tegomas[x][y] = new Tegoma(70*x+700, 70*y+500, 70, 70, x, y, EMPTY);
+			ai_tegomas[x][y]->image(images[EMPTY]);
+		}
 	}
 
-	for(int i = 0;i < 38;i++){
-		ai_tegomas[i] = new Tegoma(70*((i%6)+1)+700, 70*((i%6)+1)+500, 70, 70, i, EMPTY);
-		ai_tegomas[i]->image(images[EMPTY]);
-	}
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 	init();
 	Fl_Button *next = new Fl_Button(600, 750, 50, 50, "next");

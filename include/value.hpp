@@ -15,8 +15,9 @@ extern Masu *visual_ban[9][9];
 extern Fl_Box *message;
 extern std::vector<KOMA_TYPE> AI_TEGOMA;
 extern std::vector<KOMA_TYPE> PLAYER_TEGOMA;
-extern Tegoma *player_tegomas[38];
-extern Tegoma *ai_tegomas[38];
+extern Tegoma *player_tegomas[6][6];
+extern Tegoma *ai_tegomas[6][6];
 extern KOMA_TYPE UTSU;
+extern Point UTSU_KOMA;
 
 #endif

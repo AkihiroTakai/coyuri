@@ -14,9 +14,9 @@ void move(Point replace){
 
 			if(main_ban[9-replace.get_x()][replace.get_y()-1] != EMPTY){
 				//手駒を取れたら
-				PLAYER_TEGOMA.push_back(main_ban[9-replace.get_x()][replace.get_y()-1]);
-				player_tegomas[PLAYER_TEGOMA.size()-1]->set_type(main_ban[9-replace.get_x()][replace.get_y()-1]);
-
+				PLAYER_TEGOMA.push_back((KOMA_TYPE)(main_ban[9-replace.get_x()][replace.get_y()-1]-14));
+				player_tegomas[(PLAYER_TEGOMA.size()-1) % 6][(PLAYER_TEGOMA.size()-1) / 6]->set_type((KOMA_TYPE)(main_ban[9-replace.get_x()][replace.get_y()-1]-14));
+				//UTSU = (KOMA_TYPE)(main_ban[9-replace.get_x()][replace.get_y()-1]-14);
 			}
 
 			set_and_redraw(Point(replace.get_x(), replace.get_y()),(KOMA_TYPE)(main_ban[TARGET_KOMA.get_x()][TARGET_KOMA.get_y()]+6));
