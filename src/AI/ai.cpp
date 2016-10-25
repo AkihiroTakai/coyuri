@@ -24,28 +24,31 @@ Node *max(Node *node, int alpha, int beta, int limit){
 	//可能な手を生成
       EXPAND(node);
 
-	for(Node * & banmen : *(node->get_children())){
-		score = min(banmen, alpha, beta, limit-1)->get_evalue();
+	for(int i = 0;i < (*node->get_children()).size();i++){
+		score = min((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
 		if(score >= beta){
 			/*
 			 *beta値より大きくなった場合
 			 *これでメモリリークが起きたら、delete banmen && return NULL
 			 */
-			banmen->set_evalue(score);
-			return banmen;
+			(*node->get_children()).at(i)->set_evalue(score);
+			for(int n = i+1;n < (*node->get_children()).size();n++){
+				delete (*node->get_children()).at(n);
+			}
+			return (*node->get_children()).at(i);
 		}
 		if(score > score_max){
 			/*
 			 *よりよい解が見つかった
 			 */
 			delete te;
-			te = banmen;
+			te = (*node->get_children()).at(i);
 			te->set_evalue(score);
 			score_max = score;
 			alpha = score;
 		}else{
-			delete banmen;
-			banmen = NULL;
+			delete (*node->get_children()).at(i);
+			(*node->get_children()).at(i) = NULL;
 		}
 
 	}
@@ -65,30 +68,35 @@ Node *min(Node *node, int alpha, int beta, int limit){
 	//可能な手を生成
       PLAYER_EXPAND(node);
 
-	for(Node * & banmen : *(node->get_children())){
-		score = max(banmen, alpha, beta, limit-1)->get_evalue();
+
+	for(int i = 0;i < (*node->get_children()).size();i++){
+		score = max((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
 		if(score <= alpha){
 			/*
 			 *alpha値より小さくなった場合
 			 *これでメモリリークが起きたら、delete banmen && return NULL
 			 */
-			banmen->set_evalue(score);
-			return banmen;
+			(*node->get_children()).at(i)->set_evalue(score);
+			for(int n = i+1;n < (*node->get_children()).size();n++){
+				delete (*node->get_children()).at(n);
+			}
+			return (*node->get_children()).at(i);
 		}
 		if(score < score_max){
 			/*
 			 *よりよい解が見つかった
 			 */
 			delete te;
-			te = banmen;
+			te = (*node->get_children()).at(i);
 			te->set_evalue(score);
 			score_max = score;
 			beta = score;
 		}else{
-			delete banmen;
-			banmen = NULL;
+			delete (*node->get_children()).at(i);
+			(*node->get_children()).at(i) = NULL;
 		}
 	}
+
 
 	return te;
 }
