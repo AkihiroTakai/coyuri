@@ -15,6 +15,9 @@
 Node *max(Node *node, int alpha, int beta, int limit){
 
 	if(limit <= 0){
+		/*
+		 *一番深いノードまで達した
+		 */
 		node->set_evalue(EVAL(node));
 		return node;
 	}
@@ -48,7 +51,6 @@ Node *max(Node *node, int alpha, int beta, int limit){
 			alpha = score;
 		}else{
 			delete (*node->get_children()).at(i);
-			(*node->get_children()).at(i) = NULL;
 		}
 
 	}
@@ -59,6 +61,9 @@ Node *max(Node *node, int alpha, int beta, int limit){
 Node *min(Node *node, int alpha, int beta, int limit){
 
 	if(limit <= 0){
+		/*
+		 *一番深いノードまで達した
+		 */
 		node->set_evalue(EVAL(node));
 		return node;
 	}
@@ -103,6 +108,9 @@ Node *min(Node *node, int alpha, int beta, int limit){
 
 void ai_turn(Node *root){
 
+	int counters1[30] = {0};
+	int counters2[30] = {0};
+
 	Node *node = max(root, -100000, 100000, 4);
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
@@ -125,8 +133,6 @@ void ai_turn(Node *root){
 		std::cout << std::endl;
 	}
 
-	int counters1[30] = {0};
-	int counters2[30] = {0};
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
 			counters1[root->get_banmen()->get_type(x, y)]++;
