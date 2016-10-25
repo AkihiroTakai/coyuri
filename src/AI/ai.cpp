@@ -12,7 +12,7 @@
  *探索部分
  *探索の深さは2手先まで
  */
-Node *max(Node *node, int limit){
+Node *max(Node *node, int alpha, int beta, int limit){
 
 	if(limit <= 0){
 		node->set_evalue(EVAL(node));
@@ -25,12 +25,24 @@ Node *max(Node *node, int limit){
       EXPAND(node);
 
 	for(Node * & banmen : *(node->get_children())){
-		score = min(banmen, limit-1)->get_evalue();
+		score = min(banmen, alpha, beta, limit-1)->get_evalue();
+		if(score >= beta){
+			/*
+			 *beta値より大きくなった場合
+			 *これでメモリリークが起きたら、delete banmen && return NULL
+			 */
+			banmen->set_evalue(score);
+			return banmen;
+		}
 		if(score > score_max){
+			/*
+			 *よりよい解が見つかった
+			 */
 			delete te;
 			te = banmen;
 			te->set_evalue(score);
 			score_max = score;
+			alpha = score;
 		}else{
 			delete banmen;
 			banmen = NULL;
@@ -41,7 +53,7 @@ Node *max(Node *node, int limit){
 	return te;
 }
 
-Node *min(Node *node, int limit){
+Node *min(Node *node, int alpha, int beta, int limit){
 
 	if(limit <= 0){
 		node->set_evalue(EVAL(node));
@@ -54,13 +66,24 @@ Node *min(Node *node, int limit){
       PLAYER_EXPAND(node);
 
 	for(Node * & banmen : *(node->get_children())){
-		score = max(banmen, limit-1)->get_evalue();
+		score = max(banmen, alpha, beta, limit-1)->get_evalue();
+		if(score <= alpha){
+			/*
+			 *alpha値より小さくなった場合
+			 *これでメモリリークが起きたら、delete banmen && return NULL
+			 */
+			banmen->set_evalue(score);
+			return banmen;
+		}
 		if(score < score_max){
-
+			/*
+			 *よりよい解が見つかった
+			 */
 			delete te;
 			te = banmen;
 			te->set_evalue(score);
 			score_max = score;
+			beta = score;
 		}else{
 			delete banmen;
 			banmen = NULL;
@@ -73,7 +96,7 @@ Node *min(Node *node, int limit){
 
 void ai_turn(Node *root){
 
-	Node *node = max(root, 4);
+	Node *node = max(root, -100000, 100000, 4);
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
 			printf("%3d", root->get_banmen()->get_type(x, y));
