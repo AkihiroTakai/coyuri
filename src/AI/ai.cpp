@@ -23,12 +23,14 @@ Node *max(Node *node, int alpha, int beta, int limit){
 	}
 
 	int score = 0, score_max = -10000;
-	Node *te = NULL;
+	Node *te = NULL, *iti = NULL;
 	//可能な手を生成
       EXPAND(node);
 
 	for(int i = 0;i < (*node->get_children()).size();i++){
-		score = min((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
+		//score = min((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
+		iti = min((*node->get_children()).at(i), alpha, beta, limit-1);
+		score = iti->get_evalue();
 		if(score >= beta){
 			/*
 			 *beta値より大きくなった場合
@@ -52,7 +54,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 		}else{
 			delete (*node->get_children()).at(i);
 		}
-
+		delete iti;
 	}
 
 	return te;
