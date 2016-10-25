@@ -16,11 +16,9 @@ int Masu::handle(int event){
 			target_clear();
 			return -1;
 		}
-		std::cout << "KOMA_TYPE" << main_ban[x][y] << std::endl;
 		if(target_ban[x][y]->image() == images[TARGET]){
 			std::cout << UTSU << "UST\n";
 			if(UTSU != EMPTY){
-				std::cout << "UTS in\n";
 				PLAYER_UTSU(UTSU, Point(9-x, y+1));
 
 				UTSU = EMPTY;

@@ -86,7 +86,6 @@ void ai_turn(Node *root){
 					 *EMPTYじゃない。つまり、駒をとった->プッシュします
 					 */
 					AI_TEGOMA.push_back(ai_negaeri(root->get_banmen()->get_type(x, y)));
-					std::cout << "TYPE!!!!!!!!!!!!!:" << ai_negaeri(node->get_banmen()->get_type(x, y)) << std::endl;
 
 				}
 
@@ -105,12 +104,9 @@ void ai_turn(Node *root){
 		}
 	}
 
-	for(KOMA_TYPE koma : AI_TEGOMA){
-		std::cout << koma << " ";
-	}
+
 	for(int i = 1;i < 30;i++){
 		if(counters1[i] != counters2[i]){
-			std::cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n" << i << std::endl;
 			if(std::find(AI_TEGOMA.begin(), AI_TEGOMA.end(), i) != AI_TEGOMA.end()){
 				AI_TEGOMA.erase(std::find(AI_TEGOMA.begin(), AI_TEGOMA.end(), i));
 			}

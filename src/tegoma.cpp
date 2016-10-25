@@ -19,9 +19,8 @@ Tegoma::Tegoma(int x, int y, int width, int height, int in_x, int in_y, KOMA_TYP
 
 int Tegoma::handle(int event){
 	if(event == FL_RELEASE){
-		std::cout << "TEGOMA_EVENT!!!!\n";
 		if(type == HU){
-
+			std::cout << "HU\n";
 		}else{
 			for(Point point : wcm_ftable[TEGOMA](Point(0, 0))){
 				target_masu(point);
