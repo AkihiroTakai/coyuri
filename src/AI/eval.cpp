@@ -240,4 +240,25 @@ void PLAYER_EXPAND(Node *node){
 			}
 		}
 	}
+
+	/*
+	 *プレイヤーが持ち駒を打つ場合
+	 */
+	for(KOMA_TYPE koma : PLAYER_TEGOMA){
+		if(koma == HU){
+			for(Point p : ai_nihu_wcm()){
+				BANMEN *new_banmen = new BANMEN;
+				new_banmen->copy_banmen(node->get_banmen());
+				new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
+				node->get_children()->push_back(new Node(new_banmen, node));
+			}
+		}else{
+			for(Point p : tegoma_wcm(Point(-1, -1))){
+				BANMEN *new_banmen = new BANMEN;
+				new_banmen->copy_banmen(node->get_banmen());
+				new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
+				node->get_children()->push_back(new Node(new_banmen, node));
+			}
+		}
+	}
 }
