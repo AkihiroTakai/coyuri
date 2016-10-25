@@ -6,4 +6,4 @@ all: $(OBJS)
 	mv *.o $(DST)
 
 %.o: %.cpp
-	$(CXX) -c -O3 -o $*.o $*.cpp
+	$(CXX) -c -Ofast -o $*.o $*.cpp

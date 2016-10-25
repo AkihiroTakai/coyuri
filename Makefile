@@ -15,7 +15,7 @@ coyuri: $(OBJS)
 	$(CXX) -o $(BIN)/coyuri  $(OBJS) $(DST)/ai.o $(DST)/eval.o $(LDFLAGS)
 
 $(DST)/%.o: $(SRC)/%.cpp
-	$(CXX) $(CFLAGS) -O3 -c -o $(DST)/$*.o $(SRC)/$*.cpp $(LDFLAGS)
+	$(CXX) $(CFLAGS) -Ofast -c -o $(DST)/$*.o $(SRC)/$*.cpp $(LDFLAGS)
 
 
 clean:
