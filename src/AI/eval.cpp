@@ -44,38 +44,30 @@ int player_kaku(BANMEN *banmen);
 int EVAL(Node *node){
 	int score = 0;
 	int counters[30] = {0};
+	int scores[10];
       /*
 	 *盤面を評価
 	 */
 
 	/*
-	 *自分の王が自分の陣地内にいれば評価値加算
+	 *飛車が自分の陣地の外にいれば増加
 	 */
-      score += within_ou(node->get_banmen());
 
 	/*
-	 *飛車が自分の陣地の外にいればマイナス
+	 *角が自分の陣地の外にいれば増加
 	 */
-	score += within_hisha(node->get_banmen());
-
-	/*
-	 *角が自分の陣地の外にいればマイナス
-	 */
-	score += within_kaku(node->get_banmen());
 
 	/*
 	 *自分の陣地にプレーヤーの駒が入ってくる場合
 	 */
-	score += within_player(node->get_banmen());
 
 	/*
 	 *自分の駒が盤面に何枚残っているか
 	 */
-	score += num_on_ban(node->get_banmen());
 
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
-			counters[main_ban[x][y]]++;
+			counters[node->get_banmen()->get_type(x, y)]++;
 		}
 	}
 
@@ -123,16 +115,16 @@ int within_ou(BANMEN *banmen){
  *自分の飛車が自分の陣地内にいれば評価値を返す
  */
 int within_hisha(BANMEN *banmen){
-	if(banmen->find_koma(EN_HISHA).get_y() >= 3) return WITHIN_HISHA;
-	return -WITHIN_HISHA;
+	if(banmen->find_koma(EN_HISHA).get_y() >= 3) return -WITHIN_HISHA;
+	return WITHIN_HISHA;
 }
 
 /*
  *自分の王が自分の陣地内にいれば評価値を返す
  */
 int within_kaku(BANMEN *banmen){
-	if(banmen->find_koma(EN_KAKU).get_y() >= 3) return WITHIN_KAKU;
-	return -WITHIN_KAKU;
+	if(banmen->find_koma(EN_KAKU).get_y() >= 3) return -WITHIN_KAKU;
+	return WITHIN_KAKU;
 }
 
 /*
@@ -151,13 +143,19 @@ int within_player(BANMEN *banmen){
  *自分の陣地にプレーヤーの駒が入ってくる場合
  */
 int num_on_ban(BANMEN *banmen){
-	int count = 0;
-	for(int y = 0;y < 9;y++)
-		for(int x = 0;x < 9;x++)
-			if(banmen->get_type(x, y) >= EN_HU && banmen->get_type(x, y) <= EN_OU)
-			     count++;
+	int count = 0, pl = 0;;
+	for(int y = 0;y < 9;y++){
+		for(int x = 0;x < 9;x++){
+			if(banmen->get_type(x, y) >= EN_HU && banmen->get_type(x, y) <= EN_OU){
+				count++;
+			}else if((banmen->get_type(x, y) >= HU && banmen->get_type(x, y) <= OU)){
+				pl++;
+			}
+		}
+	}
 
-	return count*2;
+
+	return (count << 2) - (pl << 2);
 }
 
 /*
@@ -214,7 +212,7 @@ void EXPAND(Node *node){
 			}
 		}else{
 			for(Point p : tegoma_wcm(Point(-1, -1))){
-				if(p.get_y() >= 7){
+				if(p.get_y() >= 7 && koma >= EN_HU && koma <= EN_KIN){
 					BANMEN *new_banmen = new BANMEN;
 					new_banmen->copy_banmen(node->get_banmen());
 					new_banmen->set_type(9-p.get_x(), p.get_y()-1, naru(koma));
@@ -264,7 +262,7 @@ void PLAYER_EXPAND(Node *node){
 			}
 		}else{
 			for(Point p : tegoma_wcm(Point(-1, -1))){
-				if(p.get_y() <= 3){
+				if(p.get_y() <= 3 && koma){
 					BANMEN *new_banmen = new BANMEN;
 					new_banmen->copy_banmen(node->get_banmen());
 					new_banmen->set_type(9-p.get_x(), p.get_y()-1, naru(koma));

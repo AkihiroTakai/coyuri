@@ -28,7 +28,6 @@ Node *max(Node *node, int alpha, int beta, int limit){
       EXPAND(node);
 
 	for(int i = 0;i < (*node->get_children()).size();i++){
-		//score = min((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
 		iti = min((*node->get_children()).at(i), alpha, beta, limit-1);
 		score = iti->get_evalue();
 		if(score >= beta){
@@ -40,6 +39,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 				delete (*node->get_children()).at(n);
 			}
 			delete te;
+			delete iti;
 			return (*node->get_children()).at(i);
 		}
 		if(score > score_max){
@@ -71,7 +71,7 @@ Node *min(Node *node, int alpha, int beta, int limit){
 	}
 
 	int score = 0, score_max = 10000;
-	Node *te = NULL;
+	Node *te = NULL, *iti = NULL;
 	//可能な手を生成
       PLAYER_EXPAND(node);
 
@@ -102,7 +102,6 @@ Node *min(Node *node, int alpha, int beta, int limit){
 			delete (*node->get_children()).at(i);
 		}
 	}
-
 
 	return te;
 }
