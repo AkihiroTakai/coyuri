@@ -55,5 +55,6 @@ void AI_START(Fl_Widget* widget);
 void PLAYER_UTSU(KOMA_TYPE type, Point p);
 KOMA_TYPE naru(KOMA_TYPE type);
 KOMA_TYPE negaeri(KOMA_TYPE type);
+KOMA_TYPE ai_negaeri(KOMA_TYPE type);
 
 #endif

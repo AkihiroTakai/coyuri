@@ -151,7 +151,7 @@ int within_player(BANMEN *banmen){
  *自分の陣地にプレーヤーの駒が入ってくる場合
  */
 int num_on_ban(BANMEN *banmen){
-	int count;
+	int count = 0;
 	for(int y = 0;y < 9;y++)
 		for(int x = 0;x < 9;x++)
 			if(banmen->get_type(x, y) >= EN_HU && banmen->get_type(x, y) <= EN_OU)

@@ -133,3 +133,38 @@ KOMA_TYPE negaeri(KOMA_TYPE type){
 		return type;
 	}
 }
+
+/*
+ *プレイヤーに変換する関数
+ */
+KOMA_TYPE ai_negaeri(KOMA_TYPE type){
+	switch(type){
+	case HU:
+		return EN_HU;
+	case KYOUSHA:
+		return EN_KYOUSHA;
+	case KEIMA:
+		return EN_KEIMA;
+	case GIN:
+		return EN_GIN;
+	case HISHA:
+		return EN_HISHA;
+	case KAKU:
+		return EN_KAKU;
+	case TOKIN:
+		return EN_HU;
+	case NARIKYOU:
+		return EN_KYOUSHA;
+	case NARIKEI:
+		return EN_KEIMA;
+	case NARIGIN:
+		return EN_GIN;
+	case RYU:
+		return EN_HISHA;
+	case UMA:
+		return EN_KAKU;
+	default:
+		return type;
+	}
+}
+

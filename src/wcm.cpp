@@ -613,5 +613,5 @@ std::vector<Point> tegoma_wcm(Point p){
 }
 
 std::vector<Point> ai_tegoma_wcm(){
-	
+
 }
