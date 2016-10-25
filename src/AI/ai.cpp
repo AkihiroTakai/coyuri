@@ -32,12 +32,12 @@ Node *max(Node *node, int alpha, int beta, int limit){
 		if(score >= beta){
 			/*
 			 *beta値より大きくなった場合
-			 *これでメモリリークが起きたら、delete banmen && return NULL
 			 */
 			(*node->get_children()).at(i)->set_evalue(score);
 			for(int n = i+1;n < (*node->get_children()).size();n++){
 				delete (*node->get_children()).at(n);
 			}
+			delete te;
 			return (*node->get_children()).at(i);
 		}
 		if(score > score_max){
@@ -79,12 +79,12 @@ Node *min(Node *node, int alpha, int beta, int limit){
 		if(score <= alpha){
 			/*
 			 *alpha値より小さくなった場合
-			 *これでメモリリークが起きたら、delete banmen && return NULL
 			 */
 			(*node->get_children()).at(i)->set_evalue(score);
 			for(int n = i+1;n < (*node->get_children()).size();n++){
 				delete (*node->get_children()).at(n);
 			}
+			delete te;
 			return (*node->get_children()).at(i);
 		}
 		if(score < score_max){

@@ -203,6 +203,7 @@ void EXPAND(Node *node){
 	/*
 	 *AIが持ち駒を打つ場合
 	 */
+
 	for(KOMA_TYPE koma : AI_TEGOMA){
 		if(koma == EN_HU){
 			for(Point p : ai_nihu_wcm()){
@@ -227,6 +228,7 @@ void EXPAND(Node *node){
 			}
 		}
 	}
+
 }
 
 /*
@@ -251,6 +253,7 @@ void PLAYER_EXPAND(Node *node){
 	/*
 	 *プレイヤーが持ち駒を打つ場合
 	 */
+
 	for(KOMA_TYPE koma : PLAYER_TEGOMA){
 		if(koma == HU){
 			for(Point p : ai_nihu_wcm()){
@@ -275,4 +278,5 @@ void PLAYER_EXPAND(Node *node){
 			}
 		}
 	}
+
 }
