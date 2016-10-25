@@ -65,3 +65,71 @@ bool ai_jands_one_wcm(int x, int y, std::vector<Point> *points){
 	}
 	return false;
 }
+
+/*
+ *駒を変換する関数
+ */
+KOMA_TYPE naru(KOMA_TYPE type){
+	switch(type){
+	case HU:
+		return TOKIN;
+	case KYOUSHA:
+		return NARIKYOU;
+	case KEIMA:
+		return NARIKEI;
+	case GIN:
+		return NARIGIN;
+	case HISHA:
+		return RYU;
+	case KAKU:
+		return UMA;
+	case EN_HU:
+		return EN_TOKIN;
+	case EN_KYOUSHA:
+		return EN_NARIKYOU;
+	case EN_KEIMA:
+		return EN_NARIKEI;
+	case EN_GIN:
+		return EN_NARIGIN;
+	case EN_HISHA:
+		return EN_RYU;
+	case EN_KAKU:
+		return EN_UMA;
+	default:
+		return type;
+	}
+}
+
+/*
+ *敵を味方に変換する関数
+ */
+KOMA_TYPE negaeri(KOMA_TYPE type){
+	switch(type){
+	case EN_HU:
+		return HU;
+	case EN_KYOUSHA:
+		return KYOUSHA;
+	case EN_KEIMA:
+		return KEIMA;
+	case EN_GIN:
+		return GIN;
+	case EN_HISHA:
+		return HISHA;
+	case EN_KAKU:
+		return KAKU;
+	case EN_TOKIN:
+		return HU;
+	case EN_NARIKYOU:
+		return KYOUSHA;
+	case EN_NARIKEI:
+		return KEIMA;
+	case EN_NARIGIN:
+		return GIN;
+	case EN_RYU:
+		return HISHA;
+	case EN_UMA:
+		return KAKU;
+	default:
+		return type;
+	}
+}
