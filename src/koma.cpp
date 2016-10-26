@@ -149,6 +149,8 @@ KOMA_TYPE ai_negaeri(KOMA_TYPE type){
 		return EN_KEIMA;
 	case GIN:
 		return EN_GIN;
+	case KIN:
+		return EN_KIN;
 	case HISHA:
 		return EN_HISHA;
 	case KAKU:
