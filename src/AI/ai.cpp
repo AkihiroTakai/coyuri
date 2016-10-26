@@ -124,7 +124,7 @@ void ai_turn(Node *root){
 					/*
 					 *EMPTYじゃない。つまり、駒をとった->プッシュします
 					 */
-					AI_TEGOMA.push_back(ai_negaeri(root->get_banmen()->get_type(x, y)));
+					ai_push_koma(ai_negaeri(root->get_banmen()->get_type(x, y)));
 
 				}
 
