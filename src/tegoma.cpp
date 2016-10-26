@@ -29,8 +29,8 @@ int Tegoma::handle(int event){
 			}
 		}
 		UTSU = type;
-		UTSU_KOMA.set_x(9-X);
-		UTSU_KOMA.set_y(Y+1);
+		UTSU_KOMA.set_x(X);
+		UTSU_KOMA.set_y(Y);
 	}
 
 	return 1;
@@ -62,7 +62,6 @@ void show_tegoma(){
 		std::cout << koma << " ";
 	}
 
-	std::cout << std::endl << "AI:";
 	for(KOMA_TYPE koma : AI_TEGOMA){
 		std::cout << koma << " ";
 	}
@@ -80,8 +79,8 @@ void Tegoma::set_type(KOMA_TYPE arg_type){
 void PLAYER_UTSU(KOMA_TYPE type, Point p){
 
 	set_and_redraw(p, type);
-	player_tegomas[(PLAYER_TEGOMA.size()-1) % 6][(PLAYER_TEGOMA.size()-1) / 6]->image(images[EMPTY]);
-	player_tegomas[(PLAYER_TEGOMA.size()-1) % 6][(PLAYER_TEGOMA.size()-1) / 6]->redraw();
+	player_tegomas[UTSU_KOMA.get_x()][UTSU_KOMA.get_y()]->image(images[EMPTY]);
+	player_tegomas[UTSU_KOMA.get_x()][UTSU_KOMA.get_y()]->redraw();
 
 	PLAYER_TEGOMA.erase(std::find(PLAYER_TEGOMA.begin(), PLAYER_TEGOMA.end(), type));
 

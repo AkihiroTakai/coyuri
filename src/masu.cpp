@@ -20,7 +20,6 @@ int Masu::handle(int event){
 			std::cout << UTSU << "UST\n";
 			if(UTSU != EMPTY){
 				PLAYER_UTSU(UTSU, Point(9-x, y+1));
-
 				UTSU = EMPTY;
 				target_clear();
 			}else{

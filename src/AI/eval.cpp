@@ -10,6 +10,7 @@ const int WITHIN_KAKU   = 2;
 const int WITHIN_PLAYER = -15;
 const int PLAYER_HISHA  = 30;
 const int PLAYER_KAKU   = 27;
+const int AI_KOMA_FORWARD = 20;
 
 const int HU_EVAL = 10;
 const int KYOUSHA_EVAL = 15;
@@ -44,7 +45,7 @@ int player_kaku(BANMEN *banmen);
 int EVAL(Node *node){
 	int score = 0;
 	int counters[30] = {0};
-	int scores[10];
+	int scores[10] = {0};
       /*
 	 *盤面を評価
 	 */
@@ -67,9 +68,16 @@ int EVAL(Node *node){
 
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
+			if(y < 3){
+				if(node->get_banmen()->get_type(x, y) >= HU && node->get_banmen()->get_type(x, y) < OU){
+					scores[0]++;
+				}
+			}
 			counters[node->get_banmen()->get_type(x, y)]++;
 		}
 	}
+
+	score += (scores[0]<<2);
 
 	score -= counters[2]*HU_EVAL;
 	score -= counters[3]*KYOUSHA_EVAL;

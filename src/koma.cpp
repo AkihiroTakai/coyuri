@@ -113,6 +113,8 @@ KOMA_TYPE negaeri(KOMA_TYPE type){
 		return KEIMA;
 	case EN_GIN:
 		return GIN;
+	case EN_KIN:
+		return KIN;
 	case EN_HISHA:
 		return HISHA;
 	case EN_KAKU:
