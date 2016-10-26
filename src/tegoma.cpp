@@ -38,29 +38,49 @@ int Tegoma::handle(int event){
 
 
 void player_push_koma(KOMA_TYPE type){
-	PLAYER_TEGOMA.push_back(type);
+	for(int y = 0;y < 6;y++){
+		for(int x = 0;x < 6;x++){
+			if(!player_tegomas[x][y]->get_type()){
+				player_tegomas[x][y]->set_type(type);
+				player_tegomas[x][y]->image(images[type]);
+				player_tegomas[x][y]->redraw();
+				return;
+			}
+		}
+	}
 }
 
 void ai_push_koma(KOMA_TYPE type){
-	AI_TEGOMA.push_back(type);
+      for(int y = 0;y < 6;y++){
+		for(int x = 0;x < 6;x++){
+			if(ai_tegomas[x][y]->get_type() == EMPTY){
+				ai_tegomas[x][y]->set_type(type);
+				ai_tegomas[x][y]->image(images[type]);
+				ai_tegomas[x][y]->redraw();
+				return;
+			}
+		}
+	}
 }
 
 void show_tegoma(){
 	std::cout << "Player:";
 	int x = 0, y = 0;
+	/*
 	for(KOMA_TYPE koma : PLAYER_TEGOMA){
 		player_tegomas[x][y]->image(images[koma]);
 		player_tegomas[x][y]->redraw();
 		x++;
-		if(x == 9){
+		if(x == 9){*/
 			/*
 			 *いい感じに循環させます
-			 */
+			 *//*
 			x = 0;
 			y++;
 		}
 		std::cout << koma << " ";
 	}
+	*/
 
 	for(KOMA_TYPE koma : AI_TEGOMA){
 		std::cout << koma << " ";
@@ -79,9 +99,9 @@ void Tegoma::set_type(KOMA_TYPE arg_type){
 void PLAYER_UTSU(KOMA_TYPE type, Point p){
 
 	set_and_redraw(p, type);
+
+	player_tegomas[UTSU_KOMA.get_x()][UTSU_KOMA.get_y()]->set_type(EMPTY);
 	player_tegomas[UTSU_KOMA.get_x()][UTSU_KOMA.get_y()]->image(images[EMPTY]);
 	player_tegomas[UTSU_KOMA.get_x()][UTSU_KOMA.get_y()]->redraw();
-
-	PLAYER_TEGOMA.erase(std::find(PLAYER_TEGOMA.begin(), PLAYER_TEGOMA.end(), type));
 
 }

@@ -54,7 +54,8 @@ class Tegoma : public Fl_Box {
 public:
     	Tegoma(int x, int y, int width, int height, int in_x, int in_y, KOMA_TYPE type);
 	int get_x(){return X;}
-	int get_y(){return Y;};
+	int get_y(){return Y;}
+	KOMA_TYPE get_type(){return type;}
 	void set_type(KOMA_TYPE arg_type);
 };
 

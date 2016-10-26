@@ -5,6 +5,7 @@
 #include <functional>
 #include <FL/Fl_PNG_Image.H>
 #include "type.hpp"
+#include <array>
 
 extern Fl_PNG_Image *images[30];
 extern std::vector<Point> (*wcm_ftable[])(Point point);
@@ -16,8 +17,8 @@ extern Masu *visual_ban[9][9];
 extern Fl_Box *message;
 extern std::vector<KOMA_TYPE> AI_TEGOMA;
 extern std::vector<KOMA_TYPE> PLAYER_TEGOMA;
-extern Tegoma *player_tegomas[6][6];
-extern Tegoma *ai_tegomas[6][6];
+extern std::array<std::array<Tegoma *, 6>, 6> player_tegomas;
+extern std::array<std::array<Tegoma *, 6>, 6> ai_tegomas;
 extern KOMA_TYPE UTSU;
 extern Point UTSU_KOMA;
 
