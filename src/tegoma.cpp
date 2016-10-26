@@ -19,6 +19,7 @@ Tegoma::Tegoma(int x, int y, int width, int height, int in_x, int in_y, KOMA_TYP
 
 int Tegoma::handle(int event){
 	if(event == FL_RELEASE){
+		target_clear();
 		if(type == HU){
 			for(Point point : nihu_wcm()){
 				target_masu(point);
