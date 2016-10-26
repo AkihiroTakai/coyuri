@@ -209,27 +209,29 @@ void EXPAND(Node *node){
 	/*
 	 *AIが持ち駒を打つ場合
 	 */
-
-	for(KOMA_TYPE koma : AI_TEGOMA){
-		if(koma == EN_HU){
-			for(Point p : ai_nihu_wcm()){
-				BANMEN *new_banmen = new BANMEN;
-				new_banmen->copy_banmen(node->get_banmen());
-				new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
-				node->get_children()->push_back(new Node(new_banmen, node));
-			}
-		}else{
-			for(Point p : tegoma_wcm(Point(-1, -1))){
-				if(p.get_y() >= 7 && koma >= EN_HU && koma <= EN_KIN){
+	for(std::array<Tegoma *, 6> array : ai_tegomas){
+		for(Tegoma *koma : array){
+			if(koma->get_type() == EMPTY) continue;
+			if(koma->get_type() == EN_HU){
+				for(Point p : ai_nihu_wcm()){
 					BANMEN *new_banmen = new BANMEN;
 					new_banmen->copy_banmen(node->get_banmen());
-					new_banmen->set_type(9-p.get_x(), p.get_y()-1, naru(koma));
+					new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma->get_type());
 					node->get_children()->push_back(new Node(new_banmen, node));
-				}else{
-					BANMEN *new_banmen = new BANMEN;
-					new_banmen->copy_banmen(node->get_banmen());
-					new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
-					node->get_children()->push_back(new Node(new_banmen, node));
+				}
+			}else{
+				for(Point p : tegoma_wcm(Point(-1, -1))){
+					if(p.get_y() >= 7 && koma->get_type() >= EN_HU && koma->get_type() <= EN_KIN){
+						BANMEN *new_banmen = new BANMEN;
+						new_banmen->copy_banmen(node->get_banmen());
+						new_banmen->set_type(9-p.get_x(), p.get_y()-1, naru(koma->get_type()));
+						node->get_children()->push_back(new Node(new_banmen, node));
+					}else{
+						BANMEN *new_banmen = new BANMEN;
+						new_banmen->copy_banmen(node->get_banmen());
+						new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma->get_type());
+						node->get_children()->push_back(new Node(new_banmen, node));
+					}
 				}
 			}
 		}

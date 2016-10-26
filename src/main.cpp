@@ -85,13 +85,13 @@ int main(int argc, char **argv){
 	}
 	for(int y = 0;y < 6;y++){
 		for(int x = 0;x < 6;x++){
-			player_tegomas[x][y] = new Tegoma(70*x+700, 70*y, 70, 70, x, y, EMPTY);
+			player_tegomas[x][y] = new Tegoma(70*x+749, 70*y+500, 70, 70, x, y, EMPTY);
 			player_tegomas[x][y]->image(images[EMPTY]);
 		}
 	}
 	for(int y = 0;y < 6;y++){
 		for(int x = 0;x < 6;x++){
-			ai_tegomas[x][y] = new Tegoma(70*x+700, 70*y+500, 70, 70, x, y, EMPTY);
+			ai_tegomas[x][y] = new Tegoma(70*x+749, 70*y+49, 70, 70, x, y, EMPTY);
 			ai_tegomas[x][y]->image(images[EMPTY]);
 		}
 	}

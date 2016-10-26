@@ -57,6 +57,7 @@ void ai_push_koma(KOMA_TYPE type){
 				ai_tegomas[x][y]->set_type(type);
 				ai_tegomas[x][y]->image(images[type]);
 				ai_tegomas[x][y]->redraw();
+				std::cout << "typetype\n" << ai_tegomas[x][y]->get_type() << std::endl;
 				return;
 			}
 		}
@@ -65,22 +66,6 @@ void ai_push_koma(KOMA_TYPE type){
 
 void show_tegoma(){
 	std::cout << "Player:";
-	int x = 0, y = 0;
-	/*
-	for(KOMA_TYPE koma : PLAYER_TEGOMA){
-		player_tegomas[x][y]->image(images[koma]);
-		player_tegomas[x][y]->redraw();
-		x++;
-		if(x == 9){*/
-			/*
-			 *いい感じに循環させます
-			 *//*
-			x = 0;
-			y++;
-		}
-		std::cout << koma << " ";
-	}
-	*/
 
 	for(KOMA_TYPE koma : AI_TEGOMA){
 		std::cout << koma << " ";
@@ -89,11 +74,7 @@ void show_tegoma(){
 }
 
 void Tegoma::set_type(KOMA_TYPE arg_type){
-	if(arg_type >= EN_HU && arg_type <= EN_OU){
-		type = negaeri(arg_type);
-	}else{
 		type = arg_type;
-	}
 }
 
 void PLAYER_UTSU(KOMA_TYPE type, Point p){

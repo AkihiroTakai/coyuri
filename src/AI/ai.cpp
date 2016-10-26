@@ -141,11 +141,19 @@ void ai_turn(Node *root){
 		}
 	}
 
-
+	/*
+	 *駒を打っていたかの判定
+	 */
 	for(int i = 1;i < 30;i++){
-		if(counters1[i] != counters2[i]){
-			if(std::find(AI_TEGOMA.begin(), AI_TEGOMA.end(), i) != AI_TEGOMA.end()){
-				AI_TEGOMA.erase(std::find(AI_TEGOMA.begin(), AI_TEGOMA.end(), i));
+		if(counters1[i] < counters2[i]){
+			for(int y = 0;y < 6;y++){
+				for(int x = 0;x < 6;x++){
+					if(ai_tegomas[y][x]->get_type() == i){
+						ai_tegomas[y][x]->set_type(EMPTY);
+						ai_tegomas[y][x]->image(images[EMPTY]);
+						ai_tegomas[y][x]->redraw();
+					}
+				}
 			}
 		}
 	}
