@@ -77,9 +77,9 @@ Node *min(Node *node, int alpha, int beta, int limit){
 
 
 	for(int i = 0;i < (*node->get_children()).size();i++){
-		//score = max((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
-		iti = max((*node->get_children()).at(i), alpha, beta, limit-1);
-		score = iti->get_evalue();
+		score = max((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
+		//iti = max((*node->get_children()).at(i), alpha, beta, limit-1);
+		//score = iti->get_evalue();
 		if(score <= alpha){
 			/*
 			 *alpha値より小さくなった場合
@@ -88,7 +88,7 @@ Node *min(Node *node, int alpha, int beta, int limit){
 			for(int n = i+1;n < (*node->get_children()).size();n++){
 				delete (*node->get_children()).at(n);
 			}
-			delete iti;
+			//delete iti;
 			delete te;
 			return (*node->get_children()).at(i);
 		}
@@ -104,7 +104,7 @@ Node *min(Node *node, int alpha, int beta, int limit){
 		}else{
 			delete (*node->get_children()).at(i);
 		}
-		delete iti;
+		//delete iti;
 	}
 
 	return te;
@@ -116,7 +116,7 @@ void ai_turn(Node *root){
 	int counters1[30] = {0};
 	int counters2[30] = {0};
 
-	Node *node = max(root, -100000, 100000, 5);
+	Node *node = max(root, -100000, 100000, 4);
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
 			printf("%3d", node->get_banmen()->get_type(x, y));
@@ -162,6 +162,7 @@ void ai_turn(Node *root){
 	}
 	std::cout << "eval:" << node->get_evalue() << std::endl;
 
+
 }
 
 void AI_START(Fl_Widget* widget){
@@ -169,7 +170,6 @@ void AI_START(Fl_Widget* widget){
 	 *AIのターン
 	 */
 	BANMEN *banmen = new BANMEN;
-
 	for(int x = 0;x < 9;x++)
 		for(int y = 0;y < 9;y++)
 			banmen->set_type(x, y, main_ban[x][y]);

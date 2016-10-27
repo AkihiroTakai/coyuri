@@ -620,7 +620,7 @@ std::vector<Point> nihu_wcm(){
 
 	for(int x = 0;x < 9;x++){
 		for(int y = 0;y < 9;y++){
-			if(main_ban[x][y] == HU || main_ban[x][y-1]){
+			if(main_ban[x][y] == HU){
 				/*
 				 *歩があった
 				 */
@@ -631,7 +631,7 @@ std::vector<Point> nihu_wcm(){
 			/*
 			 *歩が見つからない場合、その一行を追加
 			 */
-			for(int y = 0;y < 9;y++){
+			for(int y = 1;y < 9;y++){
 				if(main_ban[x][y] == EMPTY && main_ban[x][y-1] != EN_OU){
 					points.push_back(Point(std::abs(x-9), y+1));
 				}
@@ -661,7 +661,7 @@ std::vector<Point> ai_nihu_wcm(){
 			/*
 			 *歩が見つからない場合、その一行を追加
 			 */
-			for(int y = 0;y < 9;y++){
+			for(int y = 0;y < 8;y++){
 				if(main_ban[x][y] == EMPTY && main_ban[x][y+1] != OU){
 					points.push_back(Point(std::abs(x-9), y+1));
 				}

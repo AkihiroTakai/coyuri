@@ -13,7 +13,8 @@ Fl_PNG_Image *images[30];
 Fl_PNG_Image *clear;
 Point TARGET_KOMA;
 Fl_Box *message;
- std::array<std::array<Tegoma *, 6>, 6> player_tegomas;
+Fl_Box *coyuri;
+std::array<std::array<Tegoma *, 6>, 6> player_tegomas;
 std::array<std::array<Tegoma *, 6>, 6> ai_tegomas;
 KOMA_TYPE UTSU;
 Point UTSU_KOMA;
@@ -101,9 +102,9 @@ int main(int argc, char **argv){
 	Fl_Button *next = new Fl_Button(600, 750, 50, 50, "next");
 	next->callback(AI_START);
 
-	message = new Fl_Box(300, 800, 300, 50, "こゆりちゃんです。どうやらあなたと将棋をしたいようです。");
+	message = new Fl_Box(300, 800, 300, 50, "将棋AIのこゆりといいます。\n将棋は初めてなのでお手柔らかにお願いしますね。");
 
-	Fl_Box *coyuri = new Fl_Box(50, 700, 300, 300);
+	coyuri = new Fl_Box(50, 700, 300, 300);
 	coyuri->image(new Fl_PNG_Image("/home/takai/Downloads/Untitled.png"));
 	win.end();
 	win.show(argc, argv);
