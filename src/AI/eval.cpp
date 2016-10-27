@@ -106,7 +106,7 @@ int EVAL(Node *node){
 	score += counters[26]*NARIGIN_EVAL;
 	score += counters[27]*RYU_EVAL;
 	score += counters[28]*UMA_EVAL;
-	score += counters[29]*OU_EVAL;
+	score += counters[29]*1800;
 
 	return score;
 }
@@ -192,31 +192,10 @@ int player_kaku(BANMEN *banmen){
  */
 void EXPAND(Node *node){
 
-	for(int x = 0;x < 9;x++){
-		for(int y = 0;y < 9;y++){
-			if(node->get_banmen()->get_type(x, y) >= EN_HU && node->get_banmen()->get_type(x, y) <= EN_OU){
-				for(Point p : wcm_ftable[node->get_banmen()->get_type(x, y)](Point(std::abs(x-9), y+1))){
-					if(p.get_y() >= 7 && node->get_banmen()->get_type(x, y) >= EN_HU && node->get_banmen()->get_type(x, y) <= EN_KIN){
-						BANMEN *new_banmen = new BANMEN;
-						new_banmen->copy_banmen(node->get_banmen());
-						new_banmen->set_type(9-p.get_x(), p.get_y()-1, naru(node->get_banmen()->get_type(x, y)));
-						new_banmen->set_type(x, y, EMPTY);
-						node->get_children()->push_back(new Node(new_banmen, node));
-					}else{
-						BANMEN *new_banmen = new BANMEN;
-						new_banmen->copy_banmen(node->get_banmen());
-						new_banmen->set_type(9-p.get_x(), p.get_y()-1, node->get_banmen()->get_type(x, y));
-						new_banmen->set_type(x, y, EMPTY);
-						node->get_children()->push_back(new Node(new_banmen, node));
-					}
-				}
-			}
-		}
-	}
-
 	/*
 	 *AIが持ち駒を打つ場合
 	 */
+	
 	for(std::array<Tegoma *, 6> array : ai_tegomas){
 		for(Tegoma *koma : array){
 			if(koma->get_type() == EMPTY) continue;
@@ -237,6 +216,29 @@ void EXPAND(Node *node){
 			}
 		}
 	}
+
+	for(int x = 0;x < 9;x++){
+		for(int y = 0;y < 9;y++){
+			if(node->get_banmen()->get_type(x, y) >= EN_HU && node->get_banmen()->get_type(x, y) <= EN_OU){
+				for(Point p : wcm_ftable[node->get_banmen()->get_type(x, y)](Point(std::abs(x-9), y+1))){	
+					if(p.get_y() >= 7 && node->get_banmen()->get_type(x, y) >= EN_HU && node->get_banmen()->get_type(x, y) <= EN_KIN){
+						BANMEN *new_banmen = new BANMEN;
+						new_banmen->copy_banmen(node->get_banmen());
+						new_banmen->set_type(9-p.get_x(), p.get_y()-1, naru(node->get_banmen()->get_type(x, y)));
+						new_banmen->set_type(x, y, EMPTY);
+						node->get_children()->push_back(new Node(new_banmen, node));
+					}else{
+						BANMEN *new_banmen = new BANMEN;
+						new_banmen->copy_banmen(node->get_banmen());
+						new_banmen->set_type(9-p.get_x(), p.get_y()-1, node->get_banmen()->get_type(x, y));
+						new_banmen->set_type(x, y, EMPTY);
+						node->get_children()->push_back(new Node(new_banmen, node));
+					}
+				}
+			}
+		}
+	}
+
 }
 
 /*
@@ -244,27 +246,13 @@ void EXPAND(Node *node){
  */
 void PLAYER_EXPAND(Node *node){
 
-	for(int x = 0;x < 9;x++){
-		for(int y = 0;y < 9;y++){
-			if(node->get_banmen()->get_type(x, y) >= HU && node->get_banmen()->get_type(x, y) <= OU){
-				for(Point p : wcm_ftable[node->get_banmen()->get_type(x, y)](Point(std::abs(x-9), y+1))){
-					BANMEN *new_banmen = new BANMEN;
-					new_banmen->copy_banmen(node->get_banmen());
-					new_banmen->set_type(9-p.get_x(), p.get_y()-1, node->get_banmen()->get_type(x, y));
-					new_banmen->set_type(x, y, EMPTY);
-					node->get_children()->push_back(new Node(new_banmen, node));
-				}
-			}
-		}
-	}
-
 	/*
 	 *プレイヤーが持ち駒を打つ場合
 	 */
 
 	for(KOMA_TYPE koma : PLAYER_TEGOMA){
 		if(koma == HU){
-			for(Point p : ai_nihu_wcm()){
+			for(Point p : nihu_wcm()){
 				BANMEN *new_banmen = new BANMEN;
 				new_banmen->copy_banmen(node->get_banmen());
 				new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
@@ -286,5 +274,20 @@ void PLAYER_EXPAND(Node *node){
 			}
 		}
 	}
+
+	for(int x = 0;x < 9;x++){
+		for(int y = 0;y < 9;y++){
+			if(node->get_banmen()->get_type(x, y) >= HU && node->get_banmen()->get_type(x, y) <= OU){
+				for(Point p : wcm_ftable[node->get_banmen()->get_type(x, y)](Point(std::abs(x-9), y+1))){
+					BANMEN *new_banmen = new BANMEN;
+					new_banmen->copy_banmen(node->get_banmen());
+					new_banmen->set_type(9-p.get_x(), p.get_y()-1, node->get_banmen()->get_type(x, y));
+					new_banmen->set_type(x, y, EMPTY);
+					node->get_children()->push_back(new Node(new_banmen, node));
+				}
+			}
+		}
+	}
+
 
 }

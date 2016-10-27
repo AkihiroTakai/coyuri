@@ -58,7 +58,6 @@ void ai_push_koma(KOMA_TYPE type){
 				ai_tegomas[x][y]->set_type(type);
 				ai_tegomas[x][y]->image(images[type]);
 				ai_tegomas[x][y]->redraw();
-				std::cout << "typetype\n" << ai_tegomas[x][y]->get_type() << std::endl;
 				return;
 			}
 		}
@@ -75,7 +74,7 @@ void show_tegoma(){
 }
 
 void Tegoma::set_type(KOMA_TYPE arg_type){
-		type = arg_type;
+	type = arg_type;
 }
 
 void PLAYER_UTSU(KOMA_TYPE type, Point p){

@@ -1,5 +1,5 @@
-CXX=~/bin/gcc62/bin/g++
-#CXX=g++
+#CXX=~/bin/gcc62/bin/g++
+CXX=icpc
 INCLUDE=./include
 DST=./dst
 SRC=./src
@@ -15,7 +15,7 @@ coyuri: $(OBJS)
 	$(CXX) -o $(BIN)/coyuri  $(OBJS) $(DST)/ai.o $(DST)/eval.o $(LDFLAGS)
 
 $(DST)/%.o: $(SRC)/%.cpp
-	$(CXX) $(CFLAGS) -Ofast -c -o $(DST)/$*.o $(SRC)/$*.cpp $(LDFLAGS)
+	$(CXX) $(CFLAGS) -fast -std=c++14 -c -o $(DST)/$*.o $(SRC)/$*.cpp $(LDFLAGS)
 
 
 clean:

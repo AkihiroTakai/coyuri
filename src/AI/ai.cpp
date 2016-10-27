@@ -23,7 +23,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 	}
 
 	int score = 0, score_max = -10000;
-	Node *te = NULL, *iti = NULL;
+	Node *te = NULL;
 	//可能な手を生成
       EXPAND(node);
 
@@ -39,7 +39,6 @@ Node *max(Node *node, int alpha, int beta, int limit){
 				delete (*node->get_children()).at(n);
 			}
 			delete te;
-			delete iti;
 			return (*node->get_children()).at(i);
 		}
 		if(score > score_max){
@@ -54,7 +53,6 @@ Node *max(Node *node, int alpha, int beta, int limit){
 		}else{
 			delete (*node->get_children()).at(i);
 		}
-		delete iti;
 	}
 
 	return te;
@@ -87,6 +85,7 @@ Node *min(Node *node, int alpha, int beta, int limit){
 				delete (*node->get_children()).at(n);
 			}
 			delete te;
+			delete iti;
 			return (*node->get_children()).at(i);
 		}
 		if(score < score_max){
@@ -101,6 +100,7 @@ Node *min(Node *node, int alpha, int beta, int limit){
 		}else{
 			delete (*node->get_children()).at(i);
 		}
+		delete iti;
 	}
 
 	return te;
@@ -112,10 +112,10 @@ void ai_turn(Node *root){
 	int counters1[30] = {0};
 	int counters2[30] = {0};
 
-	Node *node = max(root, -100000, 100000, 4);
+	Node *node = max(root, -100000, 100000, 5);
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
-			printf("%3d", root->get_banmen()->get_type(x, y));
+			printf("%3d", node->get_banmen()->get_type(x, y));
 			if(node->get_banmen()->get_type(x, y) != root->get_banmen()->get_type(x, y)){
 				/*
 				 *rootとnodeで盤面が異なる場合(AIが駒をとった可能性がある)
@@ -127,7 +127,6 @@ void ai_turn(Node *root){
 					ai_push_koma(ai_negaeri(root->get_banmen()->get_type(x, y)));
 
 				}
-
 			}
 			set_and_redraw(Point(std::abs(9-x), y+1), node->get_banmen()->get_type(x, y));
 		}

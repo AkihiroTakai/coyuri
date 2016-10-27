@@ -101,7 +101,10 @@ int main(int argc, char **argv){
 	Fl_Button *next = new Fl_Button(600, 750, 50, 50, "next");
 	next->callback(AI_START);
 
-	//message = new Fl_Box(400, 800, 100, 100, "えへへ。よろしくお願いしますです。");
+	message = new Fl_Box(300, 800, 300, 50, "こゆりちゃんです。どうやらあなたと将棋をしたいようです。");
+
+	Fl_Box *coyuri = new Fl_Box(50, 700, 300, 300);
+	coyuri->image(new Fl_PNG_Image("/home/takai/Downloads/Untitled.png"));
 	win.end();
 	win.show(argc, argv);
 
