@@ -201,11 +201,6 @@ void EXPAND(Node *node){
 			if(koma->get_type() == EMPTY) continue;
 			if(koma->get_type() == EN_HU){
 				for(Point p : ai_nihu_wcm()){
-					
-					if(node->get_banmen()->get_type(p.get_x(), p.get_y()-1) == EN_OU){
-						continue;
-					}
-					
 					BANMEN *new_banmen = new BANMEN;
 					new_banmen->copy_banmen(node->get_banmen());
 					new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma->get_type());
@@ -258,11 +253,6 @@ void PLAYER_EXPAND(Node *node){
 	for(KOMA_TYPE koma : PLAYER_TEGOMA){
 		if(koma == HU){
 			for(Point p : nihu_wcm()){
-				
-				if(node->get_banmen()->get_type(p.get_x(), p.get_y()+1) == OU){
-						continue;
-				}
-				
 				BANMEN *new_banmen = new BANMEN;
 				new_banmen->copy_banmen(node->get_banmen());
 				new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma);
