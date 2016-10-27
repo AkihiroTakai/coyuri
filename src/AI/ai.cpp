@@ -23,13 +23,13 @@ Node *max(Node *node, int alpha, int beta, int limit){
 	}
 
 	int score = 0, score_max = -10000;
-	Node *te = NULL;
+	Node *te = NULL, *iti = NULL;
 	//可能な手を生成
       EXPAND(node);
 
 	for(int i = 0;i < (*node->get_children()).size();i++){
-		iti = min((*node->get_children()).at(i), alpha, beta, limit-1);
-		score = iti->get_evalue();
+		score = min((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
+		//score = iti->get_evalue();
 		if(score >= beta){
 			/*
 			 *beta値より大きくなった場合
@@ -39,6 +39,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 				delete (*node->get_children()).at(n);
 			}
 			delete te;
+			//delete iti;
 			return (*node->get_children()).at(i);
 		}
 		if(score > score_max){
@@ -53,6 +54,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 		}else{
 			delete (*node->get_children()).at(i);
 		}
+		//delete iti;
 	}
 
 	return te;
@@ -69,13 +71,15 @@ Node *min(Node *node, int alpha, int beta, int limit){
 	}
 
 	int score = 0, score_max = 10000;
-	Node *te = NULL, *iti = NULL;
+	Node *te = NULL, *iti;
 	//可能な手を生成
       PLAYER_EXPAND(node);
 
 
 	for(int i = 0;i < (*node->get_children()).size();i++){
-		score = max((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
+		//score = max((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
+		iti = max((*node->get_children()).at(i), alpha, beta, limit-1);
+		score = iti->get_evalue();
 		if(score <= alpha){
 			/*
 			 *alpha値より小さくなった場合
@@ -84,8 +88,8 @@ Node *min(Node *node, int alpha, int beta, int limit){
 			for(int n = i+1;n < (*node->get_children()).size();n++){
 				delete (*node->get_children()).at(n);
 			}
-			delete te;
 			delete iti;
+			delete te;
 			return (*node->get_children()).at(i);
 		}
 		if(score < score_max){
