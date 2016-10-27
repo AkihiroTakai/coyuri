@@ -2,10 +2,10 @@
 #define VALUE_HPP
 
 #include <vector>
+#include <array>
 #include <functional>
 #include <FL/Fl_PNG_Image.H>
 #include "type.hpp"
-#include <array>
 
 extern Fl_PNG_Image *images[30];
 extern std::vector<Point> (*wcm_ftable[])(Point point);
