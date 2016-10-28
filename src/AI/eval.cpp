@@ -73,7 +73,7 @@ int EVAL(Node *node){
 					scores[0]++;
 				}
 			}
-			if(node->get_banmen()->get_type(x, y) == EN_OU){
+			if(!(node->get_banmen()->get_type(x, y) - EN_OU)){
 				if(y <= 7){
 					if(node->get_banmen()->get_type(x, y+1) >= EN_HU && node->get_banmen()->get_type(x, y+1) < EN_OU){
 						scores[1]++;

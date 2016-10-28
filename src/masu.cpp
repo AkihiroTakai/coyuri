@@ -2,6 +2,7 @@
 #include "../include/prot.hpp"
 #include "../include/value.hpp"
 #include <iostream>
+#include <FL/fl_message.H>
 #include <cmath>
 
 Masu::Masu(int x, int y, int width, int height) : Fl_Box(x, y, width, height, 0){
@@ -17,7 +18,6 @@ int Masu::handle(int event){
 			return -1;
 		}
 		if(target_ban[x][y]->image() == images[TARGET]){
-			std::cout << UTSU << "UST\n";
 			if(UTSU != EMPTY){
 				PLAYER_UTSU(UTSU, Point(9-x, y+1));
 				UTSU = EMPTY;
@@ -26,6 +26,13 @@ int Masu::handle(int event){
 				move(Point(std::abs(x-9), y+1));
 				target_clear();
 				show_tegoma();
+			}
+			if(win()){
+				fl_message("あなたの勝ちです");
+				exit(0);
+			}else if(lose()){
+				fl_message("あなたの負けです");
+				exit(0);
 			}
 			return 0;
 		}

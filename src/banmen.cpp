@@ -1,4 +1,5 @@
 #include "../include/type.hpp"
+#include "../include/value.hpp"
 #include <iostream>
 
 BANMEN::BANMEN(){
@@ -82,4 +83,26 @@ void destroy_tree(Node *root){
 		}
 	}
 
+}
+
+bool win(){
+	for(int x = 0;x < 9;x++){
+		for(int y = 0;y < 9;y++){
+			if(main_ban[x][y] == EN_OU){
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+bool lose(){
+	for(int x = 0;x < 9;x++){
+		for(int y = 0;y < 9;y++){
+			if(main_ban[x][y] == OU){
+				return false;
+			}
+		}
+	}
+	return true;
 }
