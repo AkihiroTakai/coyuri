@@ -14,7 +14,7 @@
  */
 Node *max(Node *node, int alpha, int beta, int limit){
 
-	if(limit <= 0){
+	if(limit == 0){
 		/*
 		 *一番深いノードまで達した
 		 */
@@ -23,6 +23,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 	}
 
 	int score = 0, score_max = -10000;
+	int a = alpha, b = beta;
 	Node *te = NULL, *iti = NULL;
 	//可能な手を生成
       EXPAND(node);
@@ -62,7 +63,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 
 Node *min(Node *node, int alpha, int beta, int limit){
 
-	if(limit <= 0){
+	if(limit == 0){
 		/*
 		 *一番深いノードまで達した
 		 */
@@ -110,13 +111,65 @@ Node *min(Node *node, int alpha, int beta, int limit){
 	return te;
 }
 
+Node *scout(Node *node, int alpha, int beta, int limit){
+
+	if(limit == 0){
+		/*
+		 *一番深いノードまで達した
+		 */
+		node->set_evalue(EVAL(node));
+		return node;
+	}
+
+	int a = alpha, b = beta, score = 0;
+	int score_max = -10000000;
+	Node *te = NULL, *iti;
+
+
+	//可能な手を生成
+	if(limit % 2){
+		EXPAND(node);
+	}else{
+		PLAYER_EXPAND(node);
+	}
+
+
+	for(int i = 0;i < (*node->get_children()).size();i++){
+		score = -scout((*node->get_children()).at(i), -b, -a, limit-1)->get_evalue();
+		//iti = max((*node->get_children()).at(i), alpha, beta, limit-1);
+		//score = iti->get_evalue();
+		if((score > a) && (score < beta) && (i != 0) && (limit > 2)){
+			score = -scout((*node->get_children()).at(i), -beta, -score, limit-1)->get_evalue();
+		}
+		if(score > score_max){
+			/*
+			 *alpha値より小さくなった場合
+			 */
+			if(score >= beta){
+				//delete te;
+				//te = NULL;
+				(*node->get_children()).at(i)->set_evalue(score);
+				return (*node->get_children()).at(i);
+			}
+			delete te;
+			te = NULL;
+			te = (*node->get_children()).at(i);
+			te->set_evalue(score);
+			score_max = score;
+			a = score;
+		}
+	      b = a + 1;
+	}
+	return te;
+
+}
 
 void ai_turn(Node *root){
 
 	int counters1[30] = {0};
 	int counters2[30] = {0};
 
-	Node *node = max(root, -100000, 100000, 4);
+	Node *node = scout(root, -100000, 100000, 5);
 	for(int y = 0;y < 9;y++){
 		for(int x = 0;x < 9;x++){
 			printf("%3d", node->get_banmen()->get_type(x, y));
