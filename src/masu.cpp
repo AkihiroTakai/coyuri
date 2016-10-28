@@ -28,10 +28,7 @@ int Masu::handle(int event){
 				show_tegoma();
 			}
 			if(win()){
-				fl_message("あなたの勝ちです");
-				exit(0);
-			}else if(lose()){
-				fl_message("あなたの負けです");
+				fl_message("負けちゃった。でも楽しかったよ。\nまた将棋しようね。");
 				exit(0);
 			}
 			return 0;

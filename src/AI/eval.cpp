@@ -109,7 +109,7 @@ int EVAL(Node *node){
 	score += (scores[1]<<3);
 
 	score -= counters[2]*HU_EVAL;
-	score -= counters[3]*KYOUSHA_EVAL;
+	score -= (counters[3]<<4);
 	score -= counters[4]*KEIMA_EVAL;
 	score -= counters[5]*GIN_EVAL;
 	score -= counters[6]*KIN_EVAL;
@@ -123,7 +123,7 @@ int EVAL(Node *node){
 	score -= counters[14]*UMA_EVAL;
 	score -= counters[15]*OU_EVAL;
 	score += counters[16]*HU_EVAL;
-	score += counters[17]*KYOUSHA_EVAL;
+	score += (counters[17]<<4);
 	score += counters[18]*KEIMA_EVAL;
 	score += counters[19]*GIN_EVAL;
 	score += counters[20]*KIN_EVAL;
@@ -135,7 +135,7 @@ int EVAL(Node *node){
 	score += counters[26]*NARIGIN_EVAL;
 	score += counters[27]*RYU_EVAL;
 	score += counters[28]*UMA_EVAL;
-	score += counters[29]*1800;
+	score += (counters[29]<<11);
 
 	return score;
 }

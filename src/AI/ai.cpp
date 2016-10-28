@@ -2,6 +2,7 @@
 #include "../../include/prot.hpp"
 #include "../../include/value.hpp"
 #include <iostream>
+#include <FL/fl_message.H>
 #include <string>
 #include <cmath>
 #include <algorithm>
@@ -28,8 +29,9 @@ Node *max(Node *node, int alpha, int beta, int limit){
       EXPAND(node);
 
 	for(int i = 0;i < (*node->get_children()).size();i++){
-		score = min((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
-		//score = iti->get_evalue();
+		//score = min((*node->get_children()).at(i), alpha, beta, limit-1)->get_evalue();
+		iti = min((*node->get_children()).at(i), alpha, beta, limit-1);
+		score = iti->get_evalue();
 		if(score >= beta){
 			/*
 			 *beta値より大きくなった場合
@@ -39,7 +41,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 				delete (*node->get_children()).at(n);
 			}
 			delete te;
-			//delete iti;
+			delete iti;
 			return (*node->get_children()).at(i);
 		}
 		if(score > score_max){
@@ -54,7 +56,7 @@ Node *max(Node *node, int alpha, int beta, int limit){
 		}else{
 			delete (*node->get_children()).at(i);
 		}
-		//delete iti;
+		delete iti;
 	}
 
 	return te;
@@ -135,6 +137,10 @@ void ai_turn(Node *root){
 			set_and_redraw(Point(std::abs(9-x), y+1), node->get_banmen()->get_type(x, y));
 		}
 		std::cout << std::endl;
+	}
+	if(lose()){
+		fl_message("こゆり、強くなったかな？\nまた将棋やろうね。");
+		exit(0);
 	}
 
 	for(int y = 0;y < 9;y++){
