@@ -5,13 +5,15 @@
 #include <FL/fl_message.H>
 #include <cmath>
 
+bool player_finish_flag;
+
 Masu::Masu(int x, int y, int width, int height) : Fl_Box(x, y, width, height, 0){
 	X = x;
 	Y = y;
 }
 
 int Masu::handle(int event){
-	if(event == FL_RELEASE){
+	if(event == FL_RELEASE && !player_finish_flag){
 		int x = (X/70) - 1, y = (Y/70) - 1;
 		if(main_ban[x][y] >= EN_HU && main_ban[x][y] <= EN_OU && target_ban[x][y]->image() != images[TARGET]){
 			target_clear();
@@ -31,6 +33,7 @@ int Masu::handle(int event){
 				fl_message("負けちゃった。でも楽しかったよ。\nまた将棋しようね。");
 				exit(0);
 			}
+			player_finish_flag = true;
 			return 0;
 		}
 		target_clear();

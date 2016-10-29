@@ -182,4 +182,5 @@ void AI_START(Fl_Widget* widget){
 
 	Node *root = new Node(banmen, NULL);
 	ai_turn(root);
+	player_finish_flag = false;
 }

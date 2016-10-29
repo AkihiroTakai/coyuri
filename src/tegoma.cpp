@@ -89,3 +89,4 @@ void PLAYER_UTSU(KOMA_TYPE type, Point p){
 	player_tegomas[UTSU_KOMA.get_x()][UTSU_KOMA.get_y()]->redraw();
 
 }
+
