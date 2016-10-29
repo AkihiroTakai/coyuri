@@ -16,6 +16,10 @@ enum KOMA_TYPE {
 	TEGOMA
 };
 
+enum COYURI_EXP {
+	DEFAULT, SMILE, UMM
+};
+
 class Point {
 	/*
 	 *座標の位置を保持する変数

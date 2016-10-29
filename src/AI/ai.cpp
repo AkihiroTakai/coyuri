@@ -169,7 +169,14 @@ void ai_turn(Node *root){
 	}
 	std::cout << "eval:" << node->get_evalue() << std::endl;
 
-
+	if(node->get_evalue() > 1088){
+		//今の盤面は良い
+		coyuri->image(coyuri_images[SMILE]);
+		coyuri->redraw();
+	}else{
+		coyuri->image(coyuri_images[UMM]);
+		coyuri->redraw();
+	}
 }
 
 void AI_START(Fl_Widget* widget){

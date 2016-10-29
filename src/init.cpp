@@ -44,6 +44,10 @@ void images_path_init(){
 	images[EN_RYU]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_ryu.png");
 	images[EN_UMA]      = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_uma.png");
 	images[EN_OU]       = new Fl_PNG_Image("/home/takai/Pictures/coyuri/en_ou.png");
+
+	coyuri_images[DEFAULT] = new Fl_PNG_Image("/home/takai/Pictures/coyuri/default.png");
+	coyuri_images[SMILE]   = new Fl_PNG_Image("/home/takai/Pictures/coyuri/sml.png");
+	coyuri_images[UMM]     = new Fl_PNG_Image("/home/takai/Pictures/coyuri/umm.png");
 }
 
 /*

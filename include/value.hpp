@@ -8,6 +8,7 @@
 #include "type.hpp"
 
 extern Fl_PNG_Image *images[30];
+extern Fl_PNG_Image *coyuri_images[4];
 extern std::vector<Point> (*wcm_ftable[])(Point point);
 extern KOMA_TYPE (*naru_ftable[])();
 extern KOMA_TYPE main_ban[9][9];

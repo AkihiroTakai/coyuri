@@ -10,6 +10,7 @@ Masu *visual_ban[9][9];
 Fl_Box *target_ban[9][9];
 KOMA_TYPE main_ban[9][9];
 Fl_PNG_Image *images[30];
+Fl_PNG_Image *coyuri_images[4];
 Fl_PNG_Image *clear;
 Point TARGET_KOMA;
 Fl_Box *message;
@@ -52,6 +53,8 @@ std::vector<Point> (*wcm_ftable[])(Point point) = {
 	en_ou_wcm,
 	tegoma_wcm
 };
+
+void toryo(Fl_Widget* widget);
 
 int main(int argc, char **argv){
 
@@ -99,13 +102,16 @@ int main(int argc, char **argv){
 
 	clear = new Fl_PNG_Image("/home/takai/Pictures/coyuri/clear.png");
 	init();
-	Fl_Button *next = new Fl_Button(600, 750, 50, 50, "next");
+	Fl_Button *next = new Fl_Button(550, 710, 150, 100, "こゆりちゃんの手番へ");
+	next->callback(AI_START);
+	Fl_Button *toryo_button = new Fl_Button(550, 820, 150, 100, "投了");
+	toryo_button->callback(toryo);
 	next->callback(AI_START);
 
-	message = new Fl_Box(300, 800, 300, 50, "将棋は初めてなのでお手柔らかにお願いしますね。");
+	message = new Fl_Box(280, 800, 300, 50, "手加減してくれるとうれしいな。");
 
-	coyuri = new Fl_Box(50, 700, 300, 300);
-	coyuri->image(new Fl_PNG_Image("/home/takai/Downloads/Untitled.png"));
+	coyuri = new Fl_Box(40, 700, 300, 300);
+	coyuri->image(coyuri_images[DEFAULT]);
 	win.end();
 	win.show(argc, argv);
 
@@ -118,4 +124,11 @@ int main(int argc, char **argv){
 int ctoi(char ch){
 	if('0' <= ch && ch <= '9') return (ch-'0');
 	else return -1;
+}
+
+void toryo(Fl_Widget* widget){
+	if(fl_ask("投了しますか？")){
+		update_score(true);
+		exit(1);
+	}
 }
