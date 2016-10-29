@@ -101,4 +101,5 @@ void init(){
 	Fl_Box *suji = new Fl_Box(660, 78, 110, 610, "一\n\n\n\n\n二\n\n\n\n\n三\n\n\n\n\n四\n\n\n\n\n五\n\n\n\n\n六\n\n\n\n\n七\n\n\n\n\n八\n\n\n\n\n九");
 
 	player_finish_flag = false;
+	ai_finish_flag = false;
 }

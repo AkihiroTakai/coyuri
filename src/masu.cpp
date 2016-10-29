@@ -6,6 +6,7 @@
 #include <cmath>
 
 bool player_finish_flag;
+bool ai_finish_flag;
 
 Masu::Masu(int x, int y, int width, int height) : Fl_Box(x, y, width, height, 0){
 	X = x;
@@ -30,10 +31,12 @@ int Masu::handle(int event){
 				show_tegoma();
 			}
 			if(win()){
+				update_score(true);
 				fl_message("負けちゃった。でも楽しかったよ。\nまた将棋しようね。");
 				exit(0);
 			}
 			player_finish_flag = true;
+			ai_finish_flag = true;
 			return 0;
 		}
 		target_clear();

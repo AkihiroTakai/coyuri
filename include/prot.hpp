@@ -60,5 +60,6 @@ std::vector<Point> nihu_wcm();
 std::vector<Point> ai_nihu_wcm();
 bool win();
 bool lose();
+void update_score(bool flag);
 
 #endif

@@ -23,5 +23,6 @@ extern std::array<std::array<Tegoma *, 6>, 6> ai_tegomas;
 extern KOMA_TYPE UTSU;
 extern Point UTSU_KOMA;
 extern bool player_finish_flag;
+extern bool ai_finish_flag;
 
 #endif

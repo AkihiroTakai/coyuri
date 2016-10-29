@@ -139,6 +139,7 @@ void ai_turn(Node *root){
 		std::cout << std::endl;
 	}
 	if(lose()){
+		update_score(false);
 		fl_message("こゆり、強くなったかな？\nまた将棋やろうね。");
 		exit(0);
 	}
@@ -175,6 +176,9 @@ void AI_START(Fl_Widget* widget){
 	/*
 	 *AIのターン
 	 */
+	if(!ai_finish_flag){
+		return;
+	}
 	BANMEN *banmen = new BANMEN;
 	for(int x = 0;x < 9;x++)
 		for(int y = 0;y < 9;y++)
@@ -182,5 +186,6 @@ void AI_START(Fl_Widget* widget){
 
 	Node *root = new Node(banmen, NULL);
 	ai_turn(root);
+	ai_finish_flag = false;
 	player_finish_flag = false;
 }
