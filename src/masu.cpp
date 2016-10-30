@@ -31,7 +31,7 @@ int Masu::handle(int event){
 				show_tegoma();
 			}
 			if(win()){
-				update_score(true);
+				update_score(false);
 				fl_message("負けちゃった。でも楽しかったよ。\nまた将棋しようね。");
 				exit(0);
 			}

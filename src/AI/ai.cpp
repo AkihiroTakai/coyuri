@@ -139,7 +139,7 @@ void ai_turn(Node *root){
 		std::cout << std::endl;
 	}
 	if(lose()){
-		update_score(false);
+		update_score(true);
 		fl_message("こゆり、強くなったかな？\nまた将棋やろうね。");
 		exit(0);
 	}
