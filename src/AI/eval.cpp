@@ -224,22 +224,25 @@ void EXPAND(Node *node){
 	/*
 	 *AIが持ち駒を打つ場合
 	 */
-	
-	for(std::array<Tegoma *, 6> array : ai_tegomas){
-		for(Tegoma *koma : array){
-			if(koma->get_type() == EMPTY) continue;
-			if(koma->get_type() == EN_HU){
+	/*
+	for(Tegoma **array : ai_tegomas){
+		for(Tegoma *koma : array[]){
+	*/
+	for(int y = 0;y < 6;y++){
+		for(int x = 0;x < 6;x++){
+			if(ai_tegomas[x][y]->get_type() == EMPTY) continue;
+			if(ai_tegomas[x][y]->get_type() == EN_HU){
 				for(Point p : ai_nihu_wcm()){
 					BANMEN *new_banmen = new BANMEN;
 					new_banmen->copy_banmen(node->get_banmen());
-					new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma->get_type());
+					new_banmen->set_type(9-p.get_x(), p.get_y()-1, ai_tegomas[x][y]->get_type());
 					node->get_children()->push_back(new Node(new_banmen, node));
 				}
 			}else{
 				for(Point p : tegoma_wcm(Point(-1, -1))){
 					BANMEN *new_banmen = new BANMEN;
 					new_banmen->copy_banmen(node->get_banmen());
-					new_banmen->set_type(9-p.get_x(), p.get_y()-1, koma->get_type());
+					new_banmen->set_type(9-p.get_x(), p.get_y()-1, ai_tegomas[x][y]->get_type());
 					node->get_children()->push_back(new Node(new_banmen, node));
 				}
 			}

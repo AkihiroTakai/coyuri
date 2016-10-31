@@ -2,7 +2,6 @@
 #define VALUE_HPP
 
 #include <vector>
-#include <array>
 #include <functional>
 #include <FL/Fl_PNG_Image.H>
 #include "type.hpp"
@@ -19,8 +18,8 @@ extern Fl_Box *message;
 extern Fl_Box *coyuri;
 extern std::vector<KOMA_TYPE> AI_TEGOMA;
 extern std::vector<KOMA_TYPE> PLAYER_TEGOMA;
-extern std::array<std::array<Tegoma *, 6>, 6> player_tegomas;
-extern std::array<std::array<Tegoma *, 6>, 6> ai_tegomas;
+extern Tegoma *player_tegomas[6][6];
+extern Tegoma *ai_tegomas[6][6];
 extern KOMA_TYPE UTSU;
 extern Point UTSU_KOMA;
 extern bool player_finish_flag;

@@ -3,7 +3,6 @@
 #include <iostream>
 #include "../include/type.hpp"
 #include "../include/prot.hpp"
-#include <array>
 
 const int IMAGE_SIDE = 70;
 Masu *visual_ban[9][9];
@@ -15,8 +14,8 @@ Fl_PNG_Image *clear;
 Point TARGET_KOMA;
 Fl_Box *message;
 Fl_Box *coyuri;
-std::array<std::array<Tegoma *, 6>, 6> player_tegomas;
-std::array<std::array<Tegoma *, 6>, 6> ai_tegomas;
+Tegoma *player_tegomas[6][6];
+Tegoma *ai_tegomas[6][6];
 KOMA_TYPE UTSU;
 Point UTSU_KOMA;
 
