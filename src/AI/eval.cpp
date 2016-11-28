@@ -277,7 +277,6 @@ void EXPAND(Node *node){
  *渡された盤面からプレイヤーがさせる手をすべてリストアップする関数
  */
 void PLAYER_EXPAND(Node *node){
-
 	/*
 	 *プレイヤーが持ち駒を打つ場合
 	 */
@@ -320,6 +319,4 @@ void PLAYER_EXPAND(Node *node){
 			}
 		}
 	}
-
-
 }
