@@ -117,14 +117,6 @@ int main(int argc, char **argv){
 	return Fl::run();
 }
 
-/*
- *charからintへ変換
- */
-int ctoi(char ch){
-	if('0' <= ch && ch <= '9') return (ch-'0');
-	else return -1;
-}
-
 void toryo(Fl_Widget* widget){
 	if(fl_ask("投了しますか？")){
 		update_score(true);
