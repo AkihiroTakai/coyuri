@@ -6,9 +6,9 @@
 #include <iomanip>
 
 void update_score(bool flag){
-	std::remove("/home/takai/Documents/score.txt");
-	std::ifstream back("/home/takai/Documents/score_back.txt");
-	std::ofstream front("/home/takai/Documents/score.txt");
+	std::remove("/home/annet/Documents/score.txt");
+	std::ifstream back("/home/annet/Documents/score_back.txt");
+	std::ofstream front("/home/annet/Documents/score.txt");
 	std::string back_str;
 	int win, lose;
 	win = lose = 0;
@@ -23,8 +23,8 @@ void update_score(bool flag){
 		front << "こゆりちゃんの戦績" << std::endl;
 		front << "現在" << std::to_string(win+1) << "勝" << std::to_string(lose) << "敗" << std::flush;
 		back.close();
-		std::remove("/home/takai/Documents/score_back.txt");
-		std::ofstream new_back("/home/takai/Documents/score_back.txt");
+		std::remove("/home/annet/Documents/score_back.txt");
+		std::ofstream new_back("/home/annet/Documents/score_back.txt");
 		new_back << std::to_string(win+1) << " " <<  std::to_string(lose) << std::flush;
 		new_back.close();
 	}else{
@@ -32,8 +32,8 @@ void update_score(bool flag){
 		front << "こゆりちゃんの戦績" << std::endl;
 		front << "現在" << std::to_string(win) << "勝" << std::to_string(lose+1) << "敗" << std::flush;
 		back.close();
-		std::remove("/home/takai/Documents/score_back.txt");
-		std::ofstream new_back("/home/takai/Documents/score_back.txt");
+		std::remove("/home/anneet/Documents/score_back.txt");
+		std::ofstream new_back("/home/annet/Documents/score_back.txt");
 		new_back << std::to_string(win) << " " << std::to_string(lose+1) << std::flush;
 		new_back.close();
 	}

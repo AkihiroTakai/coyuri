@@ -1,5 +1,5 @@
 #CXX=~/bin/gcc62/bin/g++
-CXX=icpc
+CXX=g++
 INCLUDE=./include
 DST=./dst
 SRC=./src
@@ -11,13 +11,14 @@ OBJS = $(DST)/point.o $(DST)/main.o $(DST)/init.o $(DST)/koma.o $(DST)/wcm.o $(D
  $(DST)/banmen.o $(DST)/tegoma.o $(DST)/naru.o $(DST)/file.o
 
 coyuri: $(OBJS)
+	mkdir -p bin
 	cd $(AI) && make all
 	$(CXX) -o $(BIN)/coyuri  $(OBJS) $(DST)/ai.o $(DST)/eval.o $(LDFLAGS)
 
 $(DST)/%.o: $(SRC)/%.cpp
-	$(CXX) $(CFLAGS) -fast -std=c++14 -c -o $(DST)/$*.o $(SRC)/$*.cpp $(LDFLAGS)
+	$(CXX) $(CFLAGS) -Ofast -march=native -std=c++14 -c -o $(DST)/$*.o $(SRC)/$*.cpp $(LDFLAGS)
 
 
 clean:
-	rm $(DST)/*.o $(BIN)/coyuri
+	rm -f $(DST)/*.o $(BIN)/coyuri
 
