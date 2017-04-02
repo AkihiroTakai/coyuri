@@ -16,6 +16,7 @@ coyuri: $(OBJS)
 	$(CXX) -o $(BIN)/coyuri  $(OBJS) $(DST)/ai.o $(DST)/eval.o $(LDFLAGS)
 
 $(DST)/%.o: $(SRC)/%.cpp
+	mkdir -p dst
 	$(CXX) $(CFLAGS) -Ofast -march=native -std=c++14 -c -o $(DST)/$*.o $(SRC)/$*.cpp $(LDFLAGS)
 
 
